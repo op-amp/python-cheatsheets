@@ -3,9 +3,11 @@
 
 ###### _Table of Contents_
 
-- [Methods](#methods)
+- [RE Module](#re-module)
 	1. Functions
 	2. Constants
+	3. Regular Expression Objects
+	4. Match Objects
 - [Regular Expression Objects](#regular-expression-objects)
 - [Match Objects](#match-objects)
 - [Special Sequences](#special-sequences)
@@ -19,33 +21,40 @@
 	4. Start / End
 
 
-## Methods
-
-### Functions
-
-**Parameters**
-
-1. DotAll
-2. IgnoreCase
-3. Verbose
-
-**Common Manipulations**
+## RE Module
 
 ``` python
 import re
+phoneNum = re.compile(r'\+?(\d{1,3})(-| )([- ()\d]+)')
+
+# Example string content sourced from the National Science Foundation website
+numFound = phoneNum.search('Call the Help Desk at 1-800-381-1532')
+print('Country code: ' + numFound.group(1))
+print('Local phone number: ' + numFound.group(3))
 ```
+
+### Functions
+
+**Compile**
+
+**Search**
+
+**Match**
 
 ### Constants
 
-1. DotAll
-2. IgnoreCase
-3. Verbose
+Flag constants as the last parameter for most of the manipulation functions:
 
+| Syntax      | Abbr        | Description |
+| ----------- | ----------- | ----------- |
+| re.IGNORECASE | re.I | Perform case-insensitive matching |
+| re.MULTILINE 	| re.M | `^` and `$` match the start and end of each line. By default, `^` only for the first line and `$` for the last line |
+| re.DOTALL 	| re.S | `.` matches any character at all. By default, it will match anything except a newline |
+| re.VERBOSE 	| re.X | Allow multiline patterns by ignoring whitespace and `#` comments except when in a set |
 
-## Regular Expression Objects
+### Regular Expression Objects
 
-
-## Match Objects
+### Match Objects
 
 
 ## Special Sequences
