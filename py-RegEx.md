@@ -4,11 +4,8 @@
 ###### _Table of Contents_
 
 - [Methods](#methods)
-	1. Compile
-	2. Search
-	3. FindAll
-	4. Sub
-	5. Split
+	1. Functions
+	2. Constants
 - [Regular Expression Objects](#regular-expression-objects)
 - [Match Objects](#match-objects)
 - [Special Sequences](#special-sequences)
@@ -24,7 +21,7 @@
 
 ## Methods
 
-### Compile
+### Functions
 
 **Parameters**
 
@@ -37,6 +34,12 @@
 ``` python
 import re
 ```
+
+### Constants
+
+1. DotAll
+2. IgnoreCase
+3. Verbose
 
 
 ## Regular Expression Objects
