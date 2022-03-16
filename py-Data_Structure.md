@@ -1,7 +1,7 @@
 # Python Data Structures
 
 
-### _Table of Contents_
+###### _Table of Contents_
 
 - Linear Structures
 	1. [List](#1-list)
@@ -15,7 +15,7 @@
 ![Linear Structure](py-Linear.png)
 
 ### 1. List
-[~~Back to Table of Contents~~](#table-of-contents)
+[↑](#table-of-contents)
 
 **Declaration**
 
@@ -77,7 +77,7 @@ List.clear()
 -------------------------------------------------------
 
 ### 2. Tuple
-[~~Back to Table of Contents~~](#table-of-contents)
+[↑](#table-of-contents)
 
 **Declaration**
 
@@ -118,7 +118,7 @@ size = len(Tuple)
 ![Non-linear Structure](py-Hash.png)
 
 ### 3. Dictionary
-[~~Back to Table of Contents~~](#table-of-contents)
+[↑](#table-of-contents)
 
 **Declaration**
 
@@ -175,7 +175,7 @@ Dict.clear()
 -------------------------------------------------------
 
 ### 4. Set
-[~~Back to Table of Contents~~](#table-of-contents)
+[↑](#table-of-contents)
 
 **Declaration**
 
