@@ -3,27 +3,26 @@
 
 ###### _Table of Contents_
 
-- [Methods](#1-methods)
+- [Methods](#methods)
 	1. Compile
 	2. Search
 	3. FindAll
 	4. Sub
 	5. Split
-- [Regular Expression Objects](#2-regular-expression-objects)
-- [Match Objects](#3-match-objects)
-- [Special Sequences](#4-special-sequences)
+- [Regular Expression Objects](#regular-expression-objects)
+- [Match Objects](#match-objects)
+- [Special Sequences](#special-sequences)
 	1. Special Characters
 	2. Character Classes
 	3. Sets
-- [Metacharacters](#5-metacharacters)
+- [Metacharacters](#metacharacters)
 	1. Group
 	2. Or
 	3. Quantifiers
-	4. Greed
-	5. Start / End
+	4. Start / End
 
 
-## 1. Methods
+## Methods
 
 ### Compile
 
@@ -39,11 +38,14 @@
 import re
 ```
 
-## 2. Regular Expression Objects
 
-## 3. Match Objects
+## Regular Expression Objects
 
-## 4. Special Sequences
+
+## Match Objects
+
+
+## Special Sequences
 
 ### Special Characters
 
@@ -74,14 +76,16 @@ import re
 
 ### Sets
 
-`[]` is used to indicate a set of characters. Inside sets,
+`[]` is used to indicate a set of characters.
 
+Inside sets,
 - Characters can be listed individually, or ranges can be indicated by giving two characters and separating them by a `-`;
 - If the first character of the set is `^`, it means the complement;
 - To match a literal `]`, place it as the first character or precede it with a backslash for an escape character;
 - Special characters lose special meanings so no need escape characters for them, but character classes are still accepted.
 
-## 5. Metacharacters
+
+## Metacharacters
 
 ### Group
 
@@ -93,4 +97,30 @@ import re
 
 ### Quantifiers
 
-`?`
+`{}` is used to specifies some repeated occurrences of the preceding character or characters grouped by round brackets.
+
+- A single number indicates an exact number of occurrences;
+- Two numbers seperated by a `,` indicates a range of numbers of occurrences;
+- An omitted left bound means a lower bound of zero, and an omitted right bound means an infinite upper bound.
+
+There are also special qualifiers for more convenient usage:
+
+| Syntax      | Description | Equivalent Curly Bracket Denotation |
+| ----------- | ----------- | ----------- |
+| ?           | zero or one occurrences 	| `{,1}` |
+| *           | zero or more occurrences 	| `{,}`  |
+| +           | one or more occurrences 	| `{1,}` |
+
+By default, qualifiers and quantifiers are all greedy (try to match as much text as possible).
+`?` is used to change their behaviors to a non-greedy fashion when postponed to qualifiers or quantifiers.
+
+### Start / End
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| ^           | Matches the start of the line 		|
+| $           | Matches the end of the line 		|
+| \A          | Matches only at the start of the string |
+| \Z          | Matches only at the end of the string 	|
+| \b          | Matches the empty string, but only at the beginning or end of a word (works as word boundaries) |
+| \B          | Matches the empty string, but only when it is not at the beginning or end of a word 		|
