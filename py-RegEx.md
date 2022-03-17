@@ -1,7 +1,7 @@
 # Python Regular Expressions
 
 
-## _Table of Contents_
+###### _Table of Contents_
 
 - [RE Module](#re-module)
 	1. Functions
