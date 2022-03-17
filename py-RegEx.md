@@ -68,7 +68,7 @@ Compiled regular expression objects support methods:
 
 Match objects always have a boolean value of `True`. To access their contents, use methods:
 
-1. `result.group(1,2,...,N)` returns a single string if there is a single argument, and returns a tuple with one item per argument if there are multiple arguments.
+1. `result.group(1,2,...,N)` returns a single string if there is a single argument (the whole matched string if the argument equals 0 or is omitted), and returns a tuple with one item per argument if there are multiple arguments.
 2. `result.groups()` returns a tuple containing all the subgroups of the match.
 
 
