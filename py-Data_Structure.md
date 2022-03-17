@@ -229,5 +229,5 @@ size = len(Set)
 Set.clear()
 ```
 
-### *References*
+## *References*
 Lutz, M. (2014). Specific Built-in Types. In _Python Pocket Reference: Python in Your Pocket_ (5th ed.) (pp. 21-66). Sebastopol, CA: O'Reilly Media.
