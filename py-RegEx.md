@@ -78,27 +78,27 @@ Match objects always have a boolean value of `True`. To access their contents, u
 
 | Syntax      | Description |
 | ----------- | ----------- |
-| .           | Wildcard 		|
+| .           | Wildcard 		    |
 | \n          | Newline / Linefeed 	|
 | \r          | Carriage Return 	|
 | \t          | Horizontal Tab 		|
 | \v          | Vertical Tab 		|
-| \f          | Formfeed 		|
-| \0          | Null 			|
-| \a          | Bell 					|
+| \f          | Formfeed 		    |
+| \0          | Null 			    |
+| \a          | Bell 					                |
 | \b          | Backspace character (only inside sets) 	|
-| \c          | Control character 			|
-| \\          | Backslash 				|
+| \c          | Control character 			            |
+| \\          | Backslash 				                |
 
 ### Character Classes
 
 | Syntax      | Description | ASCII Set Equivalence |
 | ----------- | ----------- | ----------- |
-| \d          | Matches decimal digits						| `[0-9]` 		|
-| \D          | Matches any character which is not a decimal digit		| `[^0-9]` 		|
-| \w          | Matches word characters						| `[a-zA-Z0-9_]` 	|
-| \W          | Matches any character which is not a word character		| `[^a-zA-Z0-9_]` 	|
-| \s          | Matches whitespace characters					| `[ \t\n\r\f\v]` 	|
+| \d          | Matches decimal digits						                | `[0-9]` 		    |
+| \D          | Matches any character which is not a decimal digit	        | `[^0-9]` 		    |
+| \w          | Matches word characters						                | `[a-zA-Z0-9_]` 	|
+| \W          | Matches any character which is not a word character	        | `[^a-zA-Z0-9_]` 	|
+| \s          | Matches whitespace characters					            | `[ \t\n\r\f\v]` 	|
 | \S          | Matches any character which is not a whitespace character	| `[^ \t\n\r\f\v]` 	|
 
 ### Set
@@ -142,12 +142,12 @@ By default, qualifiers and quantifiers are all greedy (try to match as much text
 
 | Syntax      | Description |
 | ----------- | ----------- |
-| ^           | Matches the start of the line 		|
-| $           | Matches the end of the line 		|
+| ^           | Matches the start of the line 		    |
+| $           | Matches the end of the line 		    |
 | \A          | Matches only at the start of the string |
 | \Z          | Matches only at the end of the string 	|
 | \b          | Matches the empty string, but only at the beginning or end of a word (works as word boundaries) |
-| \B          | Matches the empty string, but only when it is not at the beginning or end of a word 		|
+| \B          | Matches the empty string, but only when it is not at the beginning or end of a word 		    |
 
 
 ## *Examples*
