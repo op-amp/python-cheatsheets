@@ -28,8 +28,6 @@ result = prog.search(string)
 
 ### Functions
 
-Major manipulation functions:
-
 1. `re.compile(pattern, flags=0)` compiles a pattern into a regular expression object and returns it.
 2. `re.match(pattern, string, flags=0)` matches the pattern at the beginning of the string, and returns a match object or `None` if it does not match.
 3. `re.fullmatch(pattern, string, flags=0)` matches the pattern to the whole string, and returns a match object or `None` if it does not match.
@@ -39,9 +37,11 @@ Major manipulation functions:
 7. `re.sub(pattern, repl, string, count=0, flags=0)` returns the string obtained by replacing the non-overlapping occurrences of the pattern in the string by the replacement string or function. A non-negative integer can be used to specify the maximum number of pattern occurrences to be replaced.
 8. `re.split(pattern, string, maxsplit=0, flags=0)` splits the string by the occurrences of the pattern and returns the resultant list. A non-negative integer can be used to specify the number of splits, and the remainder of the string is returned as the final element of the list.
 
+Usually for the pattern, a raw string notation (an `r` prefixes the string) is used to exempt python from escaping backslashes.
+
 ### Constants
 
-Flag constants as the last parameter for most of the manipulation functions:
+Flag constants passed as the last argument for most of the manipulation functions:
 
 | Syntax      | Abbr        | Description |
 | ----------- | ----------- | ----------- |
@@ -50,7 +50,7 @@ Flag constants as the last parameter for most of the manipulation functions:
 | re.DOTALL 	| re.S | `.` matches any character at all. By default, it will match anything except a newline |
 | re.VERBOSE 	| re.X | Allow multiline patterns by ignoring whitespace and `#` comments except when in a set |
 
-Values can be combined using bitwise OR (the `|` operator) when passed as the parameter.
+Values can be combined using bitwise OR (the `|` operator) when passed to the function.
 
 ### Regular Expression Objects
 
@@ -96,10 +96,10 @@ Match objects always have a boolean value of `True`. To access their contents, u
 | ----------- | ----------- | ----------- |
 | \d          | Matches decimal digits						| `[0-9]` 		|
 | \D          | Matches any character which is not a decimal digit		| `[^0-9]` 		|
-| \w          | Matches whitespace characters					| `[a-zA-Z0-9_]` 	|
-| \W          | Matches any character which is not a whitespace character	| `[^a-zA-Z0-9_]` 	|
-| \s          | Matches word characters						| `[ \t\n\r\f\v]` 	|
-| \S          | Matches any character which is not a word character		| `[^ \t\n\r\f\v]` 	|
+| \w          | Matches word characters						| `[a-zA-Z0-9_]` 	|
+| \W          | Matches any character which is not a word character		| `[^a-zA-Z0-9_]` 	|
+| \s          | Matches whitespace characters					| `[ \t\n\r\f\v]` 	|
+| \S          | Matches any character which is not a whitespace character	| `[^ \t\n\r\f\v]` 	|
 
 ### Set
 
@@ -109,7 +109,7 @@ Inside sets,
 - Characters can be listed individually, or ranges can be indicated by giving two characters and separating them by a `-`;
 - If the first character of the set is `^`, it means the complement;
 - To match a literal `]`, place it as the first character or precede it with a backslash for an escape character;
-- Special characters lose special meanings so no need escape characters for them, but character classes are still accepted.
+- Special characters lose special meanings and no need escape characters for them, but character classes are still accepted.
 
 ### Group
 
@@ -152,14 +152,29 @@ By default, qualifiers and quantifiers are all greedy (try to match as much text
 
 ## *Examples*
 
+**Phone and email**
+
 ```python
 import re
-phoneNum = re.compile(r'\+?(\d{1,3})(-| )([- ()\d]+)')
+phoneRegex = re.compile(r'\+?(\d{1,3})(-| )([- ()\d]+)')
+emailRegex = re.compile(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}')
 
 # Example string content sourced from the National Science Foundation website
-numFound = phoneNum.search('Call the Help Desk at 1-800-381-1532')
-print('Country code: ' + numFound.group(1))
-print('Local phone number: ' + numFound.group(3))
+phoneFound = phoneRegex.search('Call the Help Desk at 1-800-381-1532')
+print('Country code: ' + phoneFound.group(1))
+print('Local number: ' + phoneFound.group(3))
+```
+
+**String strip**
+
+```python
+import re
+def regex_strip(string, chars=None):
+    if chars:
+        pattern = r'\A[' + chars + r']*(.*?)[' + chars + r']*\Z'
+    else:
+        pattern = r'\A\s*(.*?)\s*\Z'
+    return re.fullmatch(pattern, string, re.DOTALL).group(1)
 ```
 
 
