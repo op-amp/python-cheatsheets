@@ -25,7 +25,29 @@
 
 
 ## Variables
+
+### Variable Name
+
+1. Only be one word with no spaces.
+2. Only contain letters, numbers, and the underscore character.
+3. Only begin with something other than a number.
+
+### Assignment
+
+Assignment statements with an operator `=` store values in variables.
+
+
 ## Comments
+
+### Single Line Comments
+
+Any text for the rest of the line following a hash mark `#` is part of a comment and will be ignored by Python interpretor during executions.
+
+### Multiline Comments
+
+Multiline strings are often used for comments that span multiple lines.
+
+
 ## Console I/O
 ## Control Flow
 ## Functions
@@ -42,7 +64,8 @@ To use the functions and object classes inside a module:
 2. Import specific functions from the module through `from module import function`.
 	- The function can then be called with no namespace.
 	- Optional `as` following an imported function bounds the function a new name.
-	- Multiple functions can be imported together with their names separated by `,`. `*` represents all functions.
+	- Multiple functions can be imported together with their names separated by `,`, and `*` represents all functions.
 
 
 ## *References*
+Sweigart, A. (2015). _Automate the Boring Stuff With Python: Practical Programming for Total Beginners_. San Francisco, CA: No Starch Press.
