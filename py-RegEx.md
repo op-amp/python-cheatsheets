@@ -179,4 +179,4 @@ def regex_strip(string, chars=None):
 
 
 ## *References*
-Python Software Foundation. (2022, March 16). _re — Regular expression operations — Python 3.10.2 documentation_. Docs. https://docs.python.org/3/library/re.html
+Sweigart, A. (2015). _Automate the Boring Stuff With Python: Practical Programming for Total Beginners_. San Francisco, CA: No Starch Press.
