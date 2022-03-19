@@ -10,10 +10,11 @@
 	1. Common Numeric Types
 	2. Arithmetic Operators
 - [Strings](#strings)
-	1. Length
-	2. String Operators
-	3. String Formatting
-	4. String Methods
+	1. Literals
+	2. Length
+	3. String Operators
+	4. String Formatting
+	5. Methods
 - [Range](#range)
 - [Boolean Type](#boolean-type)
 	1. Boolean Values
@@ -58,6 +59,11 @@ The type names are also function names (`int()`, `float()`, `str()`, etc.) that 
 
 ## Strings
 
+### Literals
+
+A single line string begins and ends with a single quote or double quote.
+A multiline string begins and ends with three single quotes or double quotes.
+
 ### Length
 
 `len(string)` returns the number of characters in the string in form of an integer.
@@ -82,7 +88,7 @@ Use the `string % (variable1, variable2, ..., variableN)` syntax to format a str
 | %f           | Floating-point real number |
 | %s           | String 					|
 
-### String Methods
+### Methods
 
 **Letter Case**
 
@@ -163,4 +169,4 @@ None data type has only one value: `None`, representing the null value or the nu
 
 
 ## *References*
-Python Software Foundation. (2022, March 18). _Built-in Types — Python 3.10.3 documentation_. Docs. https://docs.python.org/3/library/stdtypes.html
+Sweigart, A. (2015). _Automate the Boring Stuff With Python: Practical Programming for Total Beginners_. San Francisco, CA: No Starch Press.
