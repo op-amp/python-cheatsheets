@@ -49,6 +49,16 @@ Multiline strings are often used for comments that span multiple lines.
 
 
 ## Console I/O
+
+### Print
+
+`print(object, sep=' ', end='\n', file=sys.stdout, flush=False)`
+
+### Input
+
+`input(prompt)`
+
+
 ## Control Flow
 ## Functions
 ## Classes
