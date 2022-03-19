@@ -11,10 +11,11 @@
 	2. Arithmetic Operators
 - [Strings](#strings)
 	1. Literals
-	2. Length
-	3. String Operators
-	4. String Formatting
-	5. Methods
+	2. Escape Characters
+	3. Length
+	4. String Operators
+	5. String Formatting
+	6. Methods
 - [Range](#range)
 - [Boolean Type](#boolean-type)
 	1. Boolean Values
@@ -48,13 +49,13 @@ The type names are also function names (`int()`, `float()`, `str()`, etc.) that 
 
 | Operators | Descriptions |
 |-----------|--------------|
-| +         | Addition 			|
-| -         | Subtraction 		|
-| *         | Multiplication 	|
-| **        | Power 			|
-| /         | Division 			|
-| //        | Exact Division 	|
-| %         | Modulo 			|
+| `+`       | Addition 			|
+| `-`       | Subtraction 		|
+| `*`       | Multiplication 	|
+| `**`      | Power 			|
+| `/`       | Division 			|
+| `//`      | Exact Division 	|
+| `%`       | Modulo 			|
 
 
 ## Strings
@@ -62,7 +63,30 @@ The type names are also function names (`int()`, `float()`, `str()`, etc.) that 
 ### Literals
 
 A single line string begins and ends with a single quote or double quote.
-A multiline string begins and ends with three single quotes or double quotes.
+
+A multiline string begins and ends with three single quotes or double quotes. Use `\` at the end of a line to indicate line continuation.
+
+### Escape Characters
+
+An escape character consists of a backslash `\` followed by a character indicates what to add to the string.
+
+| Syntax | Descriptions |
+|--------|--------------|
+| `\'`   | Single Quote |
+| `\"`   | Double Quote |
+| `\\`   | Backslash 	|
+| `\n`   | Line Feed 		|
+| `\r`   | Carriage Return 	|
+| `\t`   | Tabulation 		|
+| `\v`   | Line Tabulation 	|
+| `\f`   | Form Feed 		|
+| `\a`   | Bell 			|
+| `\b`   | Backspace 		|
+| `\o`   | Octal Value 		|
+| `\x`   | Hex Value 		|
+| `\0`   | Null Character 	|
+
+Despite consisting of two characters, it is commonly referred to as a singular escape character.
 
 ### Length
 
@@ -72,11 +96,11 @@ A multiline string begins and ends with three single quotes or double quotes.
 
 | Operators | Descriptions |
 |-----------|--------------|
-| +         | Concatenation	|
-| *         | Repetition 	|
-| \[\]      | Slicing 		|
-| in        | Membership 			|
-| not in    | Negated Membership 	|
+| `+`       | Concatenation	|
+| `*`       | Repetition 	|
+| `[]`      | Slicing 		|
+| `in`      | Membership 			|
+| `not in`  | Negated Membership 	|
 
 ### String Formatting
 
@@ -84,9 +108,9 @@ Use the `string % (variable1, variable2, ..., variableN)` syntax to format a str
 
 | Placeholders | Descriptions |
 |--------------|--------------|
-| %d           | Signed decimal integer 	|
-| %f           | Floating-point real number |
-| %s           | String 					|
+| `%d`         | Signed decimal integer 	|
+| `%f`         | Floating-point real number |
+| `%s`         | String 					|
 
 ### Methods
 
@@ -145,22 +169,22 @@ Boolean data type has only two values: `True` and `False`.
 
 | Operators | Descriptions |
 |-----------|--------------|
-| ==        | Equal to     |
-| !=        | Not equal to |
-| <         | Less than    |
-| >         | Greater than |
-| <=        | Less than or equal to    |
-| >=        | Greater than or equal to |
-| is        | Object identity 			|
-| is not    | Negated object identity 	|
+| `==`      | Equal to     |
+| `!=`      | Not equal to |
+| `<`       | Less than    |
+| `>`       | Greater than |
+| `<=`      | Less than or equal to    |
+| `>=`      | Greater than or equal to |
+| `is`      | Object identity 			|
+| `is not`  | Negated object identity 	|
 
 ### Boolean Operators
 
 | Operators | Descriptions |
 |-----------|--------------|
-| and       | Intersection |
-| or        | Union        |
-| not       | Complement   |
+| `and`     | Intersection |
+| `or`      | Union        |
+| `not`     | Complement   |
 
 
 ## None Type
