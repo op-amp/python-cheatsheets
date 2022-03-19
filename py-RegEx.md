@@ -45,10 +45,10 @@ Flag constants passed as the last argument for most of the manipulation function
 
 | Syntax      | Abbr        | Description |
 | ----------- | ----------- | ----------- |
-| re.IGNORECASE | re.I | Perform case-insensitive matching |
-| re.MULTILINE 	| re.M | `^` and `$` match the start and end of each line. By default, `^` only for the first line and `$` for the last line |
-| re.DOTALL 	| re.S | `.` matches any character at all. By default, it will match anything except a newline |
-| re.VERBOSE 	| re.X | Allow multiline patterns by ignoring whitespace and `#` comments except when in a set |
+| `re.IGNORECASE` 	| `re.I` | Perform case-insensitive matching |
+| `re.MULTILINE` 	| `re.M` | `^` and `$` match the start and end of each line. By default, `^` only for the first line and `$` for the last line |
+| `re.DOTALL` 		| `re.S` | `.` matches any character at all. By default, it will match anything except a newline |
+| `re.VERBOSE` 		| `re.X` | Allow multiline patterns by ignoring whitespace and `#` comments except when in a set |
 
 Values can be combined using bitwise OR (the `|` operator) when passed to the function.
 
@@ -78,28 +78,28 @@ Match objects always have a boolean value of `True`. To access their contents, u
 
 | Syntax      | Description |
 | ----------- | ----------- |
-| .           | Wildcard 		    |
-| \n          | Newline / Linefeed 	|
-| \r          | Carriage Return 	|
-| \t          | Horizontal Tab 		|
-| \v          | Vertical Tab 		|
-| \f          | Formfeed 		    |
-| \0          | Null 			    |
-| \a          | Bell 					                |
-| \b          | Backspace character (only inside sets) 	|
-| \c          | Control character 			            |
-| \\          | Backslash 				                |
+| `.`         | Wildcard 		    |
+| `\n`        | Newline / Linefeed 	|
+| `\r`        | Carriage Return 	|
+| `\t`        | Horizontal Tab 		|
+| `\v`        | Vertical Tab 		|
+| `\f`        | Formfeed 		    |
+| `\0`        | Null 			    |
+| `\a`        | Bell 					                |
+| `\b`        | Backspace character (only inside sets) 	|
+| `\c`        | Control character 			            |
+| `\\`        | Backslash 				                |
 
 ### Character Classes
 
 | Syntax      | Description | ASCII Set Equivalence |
 | ----------- | ----------- | ----------- |
-| \d          | Matches decimal digits						                | `[0-9]` 		    |
-| \D          | Matches any character which is not a decimal digit	        | `[^0-9]` 		    |
-| \w          | Matches word characters						                | `[a-zA-Z0-9_]` 	|
-| \W          | Matches any character which is not a word character	        | `[^a-zA-Z0-9_]` 	|
-| \s          | Matches whitespace characters					            | `[ \t\n\r\f\v]` 	|
-| \S          | Matches any character which is not a whitespace character	| `[^ \t\n\r\f\v]` 	|
+| `\d`        | Matches decimal digits						                | `[0-9]` 		    |
+| `\D`        | Matches any character which is not a decimal digit	        | `[^0-9]` 		    |
+| `\w`        | Matches word characters						                | `[a-zA-Z0-9_]` 	|
+| `\W`        | Matches any character which is not a word character	        | `[^a-zA-Z0-9_]` 	|
+| `\s`        | Matches whitespace characters					            | `[ \t\n\r\f\v]` 	|
+| `\S`        | Matches any character which is not a whitespace character	| `[^ \t\n\r\f\v]` 	|
 
 ### Set
 
@@ -131,9 +131,9 @@ There are also special qualifiers for more convenient usage:
 
 | Syntax      | Description | Equivalent Curly Bracket Denotation |
 | ----------- | ----------- | ----------- |
-| ?           | zero or one occurrences 	| `{,1}` |
-| *           | zero or more occurrences 	| `{,}`  |
-| +           | one or more occurrences 	| `{1,}` |
+| `?`         | zero or one occurrences 	| `{,1}` |
+| `*`         | zero or more occurrences 	| `{,}`  |
+| `+`         | one or more occurrences 	| `{1,}` |
 
 By default, qualifiers and quantifiers are all greedy (try to match as much text as possible).
 `?` is used to change their behaviors to a non-greedy fashion when postponed to qualifiers or quantifiers.
@@ -142,12 +142,12 @@ By default, qualifiers and quantifiers are all greedy (try to match as much text
 
 | Syntax      | Description |
 | ----------- | ----------- |
-| ^           | Matches the start of the line 		    |
-| $           | Matches the end of the line 		    |
-| \A          | Matches only at the start of the string |
-| \Z          | Matches only at the end of the string 	|
-| \b          | Matches the empty string, but only at the beginning or end of a word (works as word boundaries) |
-| \B          | Matches the empty string, but only when it is not at the beginning or end of a word 		    |
+| `^`         | Matches the start of the line 		    |
+| `$`         | Matches the end of the line 		    |
+| `\A`        | Matches only at the start of the string |
+| `\Z`        | Matches only at the end of the string 	|
+| `\b`        | Matches the empty string, but only at the beginning or end of a word (works as word boundaries) |
+| `\B`        | Matches the empty string, but only when it is not at the beginning or end of a word 		    |
 
 
 ## *Examples*
