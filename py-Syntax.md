@@ -9,6 +9,7 @@
 - Comments
 	1. Single Line
 	2. Multiline
+	3. Pass
 - Console I/O
 	1. Print
 	2. Input
@@ -47,6 +48,10 @@ Any text for the rest of the line following a hash mark `#` is part of a comment
 ### Multiline Comments
 
 Multiline strings are often used for comments that span multiple lines.
+
+### Pass
+
+The **`pass` statement** is a null statement. `pass` is not ignored by the interpreter. However, nothing happens when it is executed.
 
 
 ## Console I/O
@@ -151,6 +156,19 @@ In a local scope, whenever a variable is to be written (at the left side of `=` 
 A **`global` statement** can change the default behavior and make local assignments directly refer to the global variable. No local variable will be initialized then.
 
 ### Exception Handling
+
+Errors detected during execution are called exceptions (in contrast with syntax errors).
+
+The **`try` statement** can be used to handle selected exceptions. It can have 4 types of clauses:
+
+1. The code that could potentially casue an error is put in the `try` clause.
+2. The program execution moves to the corresponding `except` clause if an error happens.
+3. An optional `else` clause following all `except` clauses will be executed if the try clause does not raise an exception.
+4. An optional `finally` clause will be unconditionally executed as the last task before the `try` statement completes.
+
+If an exception occurs which does not match any exception named in the `except` clauses, it is passed on to outer `try` statements.
+
+
 ## Classes
 ## Modules
 
