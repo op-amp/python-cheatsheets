@@ -23,10 +23,10 @@
 	4. Exception Handling
 - Classes
 	1. Inheritance
-	2. Constructors
-	3. Docstrings
-	4. The Self Parameter
-	5. Object Deletion
+	2. Encapsulation
+	3. The Self Parameter
+	4. Object Deletion
+	5. Polymorphism
 - Modules
 
 
@@ -189,17 +189,12 @@ It consists of the following:
 
 Built-in types can be used as base classes for extension by the user. Most built-in operators can be redefined for class instances.
 
-### Constructors
+### Encapsulation
 
-Class functions that begin with double underscore are called special functions.
+Private attributes are denoted using single or double underscores as the prefix. Some special attributes that begin with double underscores:
 
-When a class defines an `__init__()` method, class instantiation automatically invokes `__init__()` for the newly-created class instance.
-
-### Docstrings
-
-There are also special attributes that begins with double underscores.
-
-For example, `__doc__` gives the docstring of that class.
+1. Constructors: class instantiation automatically invokes the `__init__()` method for the newly-created class instance if defined.
+2. Docstrings: `__doc__` gives the documentation string of that class.
 
 ### The Self Parameter
 
@@ -209,6 +204,10 @@ It refers to the current instance of the class, and is used to access variable a
 ### Object Deletion
 
 A **`del` statement** deletes objects or properties on objects.
+
+### Polymorphism
+
+If multiple types of objects share a same method, a common interface can be created by a `def` statement and used.
 
 
 ## Modules
