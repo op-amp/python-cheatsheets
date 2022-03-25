@@ -25,8 +25,9 @@
 	1. Inheritance
 	2. Encapsulation
 	3. The Self Parameter
-	4. Object Deletion
-	5. Polymorphism
+	4. Operator Overloading
+	5. Object Deletion
+	6. Polymorphism
 - Modules
 
 
@@ -187,21 +188,48 @@ It consists of the following:
 - A colon
 - An indented block of code specifying its attributes
 
-Built-in types can be used as base classes for extension by the user. Most built-in operators can be redefined for class instances.
+Built-in types can be used as base classes for extension by the user.
 
 ### Encapsulation
 
 Private attributes, denoted by a single or double underscores as the prefix, prevent data from direct modifications.
 
-Special private attributes:
+A few special private attributes:
 
 1. Constructor - class instantiation automatically invokes the `__init__()` method for the newly-created class instance if defined.
-2. Docstring - `__doc__` gives the documentation string of that class.
+2. As String - `__str__()` is called when `print()` and `str()` functions are invoked on the object and returns a string.
+3. Docstring - `__doc__` gives the documentation string of that class.
 
 ### The Self Parameter
 
 The first argument of a function in class must be the object itself, oftenly called `self`.
 It refers to the current instance of the class, and is used to access variable and method attributes that belongs to the class.
+
+### Operator Overloading
+
+Most built-in operators which are interpreted as functions can be redefined for class instances.
+
+| Operator | Interpretation |
+|----------|----------------|
+| `a + b`  | `a.__add__(b)` |
+| `a - b`  | `a.__sub__(b)` |
+| `a * b`  | `a.__mul__(b)` |
+| `a ** b` | `a.__pow__(b)` |
+| `a / b`  | `a.__truediv__(b)`  |
+| `a // b` | `a.__floordiv__(b)` |
+| `a % b`  | `a.__mod__(b)` |
+| `a << b` | `a.__lshift__(b)`   |
+| `a << b` | `a.__rshift__(b)`   |
+| `a & b`  | `a.__and__(b)` |
+| `a \| b` | `a.__or__(b)`  |
+| `a ^ b`  | `a.__xor__(b)` |
+| `~a`     | `a.__invert__(b)`   |
+| `a < b`  | `a.__lt__(b)`  |
+| `a <= b` | `a.__le__(b)`  |
+| `a == b` | `a.__eq__(b)`  |
+| `a != b` | `a.__ne__(b)`  |
+| `a > b`  | `a.__gt__(b)`  |
+| `a >= b` | `a.__ge__(b)`  |
 
 ### Object Deletion
 
