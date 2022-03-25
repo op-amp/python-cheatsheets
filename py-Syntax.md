@@ -191,10 +191,12 @@ Built-in types can be used as base classes for extension by the user. Most built
 
 ### Encapsulation
 
-Private attributes are denoted using single or double underscores as the prefix. Some special attributes that begin with double underscores:
+Private attributes, denoted by a single or double underscores as the prefix, prevent data from direct modifications.
 
-1. Constructors: class instantiation automatically invokes the `__init__()` method for the newly-created class instance if defined.
-2. Docstrings: `__doc__` gives the documentation string of that class.
+Special private attributes:
+
+1. Constructor - class instantiation automatically invokes the `__init__()` method for the newly-created class instance if defined.
+2. Docstring - `__doc__` gives the documentation string of that class.
 
 ### The Self Parameter
 
@@ -208,6 +210,18 @@ A **`del` statement** deletes objects or properties on objects.
 ### Polymorphism
 
 If multiple types of objects share a same method, a common interface can be created by a `def` statement and used.
+
+```python
+class A:
+    def method(self):
+        pass
+class B:
+    def method(self):
+        pass
+
+def interface(object):
+    object.method()
+```
 
 
 ## Modules
@@ -226,6 +240,82 @@ To use the functions and object classes inside a module:
 	- The function can then be called with no namespace.
 	- Optional `as` following an imported function bounds the function a new name.
 	- Multiple functions can be imported together with their names separated by `,`, and `*` represents all functions.
+
+
+## *Examples*
+
+**RTS Game Units Information**
+
+```python
+class Entity:
+    '''Any abstract solid entity use this as base class'''
+    def __init__(self, name, cost, hitpoints, prerequisite, armor):
+        self.name = name
+        self.cost = cost
+        self.hitpoints = hitpoints
+        self.prerequisite = prerequisite
+        self.armor = armor
+
+class Support:
+    '''Abstract support powers'''
+    def __init__(self, name, cost, cooldown, prerequisite, power):
+        self.name = name
+        self.cost = cost
+        self.cooldown = cooldown
+        self.prerequisite = prerequisite
+        self.power = power
+
+class Structure(Entity):
+    '''Any abstract structure use this as base class'''
+    type = 'Structure'
+    def __init__(self, name, cost, hitpoints, prerequisite, armor, power):
+        super().__init__(name, cost, hitpoints, prerequisite, armor)
+        self.power = power
+
+class Base(Structure):
+    '''Abstract buildings'''
+    def production_line(self):
+        return 'ConYard1'
+
+class Defense(Structure):
+    '''Abstract armory'''
+    def production_line(self):
+        return 'ConYard2'
+
+class Unit(Entity):
+    '''Any abstract mobile unit use this as base class'''
+    type = 'Unit'
+    def __init__(self, name, cost, hitpoints, prerequisite, armor, speed, equipment):
+        super().__init__(name, cost, hitpoints, prerequisite, armor)
+        self.speed = speed
+        self.equipment = equipment
+
+class Infantry(Unit):
+    '''Abstract infantry'''
+    type = 'Infantry'
+    def production_line(self):
+        return 'Barrack'
+
+class Vehicle(Unit):
+    '''Abstract vehicles'''
+    def production_line(self):
+        return 'WarFact'
+
+class Ship(Unit):
+    '''Abstract ships'''
+    def production_line(self):
+        return 'Shipyard'
+
+class Aircraft(Unit):
+    '''Abstract general Aircrafts'''
+    def production_line(self):
+        return 'WarFact'
+
+class Jet(Aircraft):
+    '''Abstract jet Aircrafts'''
+    def production_line(self):
+        return 'Airfield'
+```
 
 
 ## *References*
