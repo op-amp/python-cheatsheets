@@ -209,7 +209,7 @@ A **`del` statement** deletes objects or properties on objects.
 
 ### Polymorphism
 
-If multiple types of objects share a same method, a common interface can be created by a `def` statement and used.
+If multiple types of objects share a same attribute, a common interface can be created by a `def` statement and used.
 
 ```python
 class A:
@@ -315,6 +315,28 @@ class Jet(Aircraft):
     '''Abstract jet Aircrafts'''
     def production_line(self):
         return 'Airfield'
+
+def get_info(obj):
+    info = {}
+    info['Name'] = obj.name
+    info['Cost'] = obj.cost
+    info['Prerequisite'] = obj.prerequisite
+    try:
+        info['Recharge Time'] = obj.cooldown
+        info['Requires Power'] = obj.power
+    except AttributeError:
+        info['Hitpoints'] = obj.hitpoints
+        info['Armor'] = obj.armor
+        try:
+            info['Speed'] = obj.speed
+            info['Equipment'] = obj.equipment
+        except AttributeError:
+            info['Power'] = obj.power
+    info['Production Line'] = obj.production_line()
+    return info
+
+e2 = Infantry('Conscript', 60, 125, 'Barracks', 'Flak', 7, 'PPSh 41')
+print(get_info(e2))
 ```
 
 
