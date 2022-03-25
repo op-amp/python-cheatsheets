@@ -14,8 +14,7 @@
 	2. Escape Characters
 	3. Length
 	4. String Operators
-	5. String Formatting
-	6. Methods
+	5. Methods
 - [Range](#range)
 - [Boolean Type](#boolean-type)
 	1. Boolean Values
@@ -54,7 +53,7 @@ The type names are also function names (`int()`, `float()`, `str()`, etc.) that 
 | `*`       | Multiplication 	|
 | `**`      | Power 			|
 | `/`       | Division 			|
-| `//`      | Exact Division 	|
+| `//`      | Floor Division 	|
 | `%`       | Modulo 			|
 
 
@@ -101,16 +100,20 @@ Despite consisting of two characters, it is commonly referred to as a singular e
 | `[]`      | Slicing 		|
 | `in`      | Membership 			|
 | `not in`  | Negated Membership 	|
+| `%`       | Formatting |
 
-### String Formatting
-
-Use the `string % (variable1, variable2, ..., variableN)` syntax to format a string, i.e. to insert variables in a tuple along with the string.
+Use the `string % (variable1, variable2, ..., variableN)` syntax to format a string, i.e. to insert values in the tuple to the string.
 
 | Placeholders | Descriptions |
 |--------------|--------------|
 | `%d`         | Signed decimal integer 	|
+| `%u`         | Unsigned decimal integer 	|
 | `%f`         | Floating-point real number |
+| `%c`         | Single character 			|
 | `%s`         | String 					|
+
+Adding a number before the letter indicates the total space that shall be reserved.
+By default, the content of the placehold aligns right, but a minus sign switch it to align left.
 
 ### Methods
 
@@ -150,6 +153,38 @@ Use the `string % (variable1, variable2, ..., variableN)` syntax to format a str
 1. `string.center(width, padding)` center aligns the string to a specified width using the padding character (`' '` if omitted) as the fill.
 2. `string.ljust(width, padding)` left aligns the string to a specified width using the padding character (`' '` if omitted) as the fill.
 3. `string.rjust(width, padding)` right aligns the string to a specified width using the padding character (`' '` if omitted) as the fill.
+
+**Formatting**
+
+`string.format(variable1, variable2, ..., variableN)` formats the specified values and insert them inside the string's placeholder.
+
+The placeholder is defined by curly brackets `{}` that hold:
+
+- An index number (starting from 0) that maps to positional parameters or a keyword that maps to keyword parameters;
+- Optional `:` followed by the type characters which together specify the formatting type.
+
+| Type Character | Descriptions |
+|----------------|--------------|
+| `<`            | Left align to the remaining space 					|
+| `>`            | Right align to the remaining space 					|
+| `^`            | Center align to the remaining space 					|
+| `=`            | Force the plus/minus sign to the leftmost position 	|
+| `,`            | Use commas as thousand separators 					|
+| `_`            | Use underscores as thousand separators 				|
+| `+`            | Add a plus sign to positive numbers 					|
+| `d`            | Decimal integer 										|
+| `b`            | Binary format 										|
+| `o`            | Octal format 										|
+| `x`            | Hexadecimal format 									|
+| `X`            | Hexadecimal format (upper case) 						|
+| `e`            | Scientific notation 									|
+| `E`            | Scientific notation (uppercase E) 					|
+| `f`            | Fixed point number 									|
+| `F`            | Fixed point number (uppercase INF and NAN) 			|
+| `g`            | General format - the shorter version of `f` and `e` 	|
+| `G`            | General format (uppercase E) 						|
+| `%`            | Percentage format 									|
+| `c`            | Corresponding Unicode character 						|
 
 
 ## Range
