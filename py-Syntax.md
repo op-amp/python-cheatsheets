@@ -22,6 +22,11 @@
 	3. Variable Scope
 	4. Exception Handling
 - Classes
+	1. Inheritance
+	2. Constructors
+	3. Docstrings
+	4. The Self Parameter
+	5. Object Deletion
 - Modules
 
 
@@ -127,7 +132,7 @@ It consists of the following:
 
 - The `def` keyword
 - The function name
-- Parameters of the function in a pair of square brackets
+- Parameters of the function in a pair of round brackets
 - A colon
 - An indented block of code (the function body)
 
@@ -170,6 +175,42 @@ If an exception occurs which does not match any exception named in the `except` 
 
 
 ## Classes
+
+### Inheritance
+
+A **`class` statement** indicates a class definition.
+It consists of the following:
+
+- The `class` keyword
+- The class name
+- The parent class in a pair of round brackets
+- A colon
+- An indented block of code specifying its attributes
+
+Built-in types can be used as base classes for extension by the user. Most built-in operators can be redefined for class instances.
+
+### Constructors
+
+Class functions that begin with double underscore are called special functions.
+
+When a class defines an `__init__()` method, class instantiation automatically invokes `__init__()` for the newly-created class instance.
+
+### Docstrings
+
+There are also special attributes that begins with double underscores.
+
+For example, `__doc__` gives the docstring of that class.
+
+### The Self Parameter
+
+The first argument of a function in class must be the object itself, oftenly called `self`.
+It refers to the current instance of the class, and is used to access variable and method attributes that belongs to the class.
+
+### Object Deletion
+
+A **`del` statement** deletes objects or properties on objects.
+
+
 ## Modules
 
 Each python program is a module. Usually the module name is just the file name omitting the `.py` suffix.
