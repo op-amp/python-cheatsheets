@@ -23,10 +23,10 @@
 	4. Exception Handling
 - Classes
 	1. Inheritance
-	2. Encapsulation
-	3. The Self Parameter
-	4. Operator Overloading
-	5. Object Deletion
+	2. Instantiation
+	3. Encapsulation
+	4. Self Reference
+	5. Operator Overloading
 	6. Polymorphism
 - Modules
 
@@ -184,24 +184,35 @@ It consists of the following:
 
 - The `class` keyword
 - The class name
-- The parent class in a pair of round brackets
+- The base classes in a pair of round brackets, indicates the inheritance
 - A colon
 - An indented block of code specifying its attributes
 
 Built-in types can be used as base classes for extension by the user.
 
+### Instantiation
+
+Call the class as a function and use an assignment statement to create a class instance, an object.
+
+Each class in Pyhton is actually an instance of the `type` metaclass.
+Thus a class definition can be rewritten as: `type(name, bases, attributes)`, an instantiation where the bases is a tuple and the attributes is a dictionary.
+
+A **`del` statement** deletes objects or properties on objects.
+
 ### Encapsulation
 
 Private attributes, denoted by a single or double underscores as the prefix, prevent data from direct modifications.
 
-A few special private attributes:
+A few common special private attributes of objects:
 
-1. `__init__()` is automatically invoked during class instantiation if defined, initializing a new class instance as the constructor.
-2. `__str__()` is called when `print()` and `str()` functions are invoked on the object and returns the object as a string.
-3. `__doc__` gives the documentation string (docstring) of that class.
+1. `__init__()` is automatically invoked during class instantiation if defined, initializing a new class instance as its constructor.
+2. `__call__()` is invoked when an object is called like a function, to resolve the behaviors of this callable object.
+3. `__str__()` is invoked when `print()` or `str()` function are called on the object and returns the object as a string.
 4. `__class__` refers to the class from which the object was created.
+5. `__doc__` refers to the documentation string (docstring) of that class.
+6. `__dict__` refers to a dictionary used to store the public attributes of an object.
 
-### The Self Parameter
+### Self Reference
 
 The first argument of a function in class must be the object itself, oftenly called `self`.
 It refers to the current instance of the class, and is used to access variable and method attributes that belongs to the class.
@@ -231,10 +242,6 @@ Most built-in operators which are interpreted as functions can be redefined for 
 | `a != b` | `a.__ne__(b)`  |
 | `a > b`  | `a.__gt__(b)`  |
 | `a >= b` | `a.__ge__(b)`  |
-
-### Object Deletion
-
-A **`del` statement** deletes objects or properties on objects.
 
 ### Polymorphism
 
