@@ -196,9 +196,10 @@ Private attributes, denoted by a single or double underscores as the prefix, pre
 
 A few special private attributes:
 
-1. Constructor - class instantiation automatically invokes the `__init__()` method for the newly-created class instance if defined.
-2. As String - `__str__()` is called when `print()` and `str()` functions are invoked on the object and returns a string.
-3. Docstring - `__doc__` gives the documentation string of that class.
+1. `__init__()` is automatically invoked during class instantiation if defined, initializing a new class instance as the constructor.
+2. `__str__()` is called when `print()` and `str()` functions are invoked on the object and returns the object as a string.
+3. `__doc__` gives the documentation string (docstring) of that class.
+4. `__class__` refers to the class from which the object was created.
 
 ### The Self Parameter
 
@@ -347,6 +348,7 @@ class Jet(Aircraft):
 def get_info(obj):
     info = {}
     info['Name'] = obj.name
+    info['Category'] = obj.__class__.type
     info['Cost'] = obj.cost
     info['Prerequisite'] = obj.prerequisite
     try:
