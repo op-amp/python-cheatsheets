@@ -9,6 +9,7 @@
 - [Numeric Types](#numeric-types)
 	1. Common Numeric Types
 	2. Arithmetic Operators
+	3. Functions
 - [Strings](#strings)
 	1. Literals
 	2. Escape Characters
@@ -38,11 +39,11 @@ The type names are also function names (`int()`, `float()`, `str()`, etc.) that 
 
 ### Common Numeric Types
 
-**Integer** - Whole number.
+**Integer** - Whole number. By default decimal; `0b` prefix for binary; `0o` prefix for octal; `0x` prefix for hexadecimal. 
 
 **Floating-Point Number** - Number with a decimal point or using scientific notation (with an `e` sign).
 
-**Complex Number** - Number in form of `a + bj` where `a` and `b` are integers or floats.
+**Complex Number** - Number in form of `a + bj` where `a` and `b` are integers or floats. `z.real` and `z.imag` indicates corresponding parts.
 
 ### Arithmetic Operators
 
@@ -55,6 +56,12 @@ The type names are also function names (`int()`, `float()`, `str()`, etc.) that 
 | `/`       | Division 			|
 | `//`      | Floor Division 	|
 | `%`       | Modulo 			|
+
+### Functions
+
+1. `pow(x, y)` returns `x` to the power `y`.
+2. `abs(x)` returns absolute value or magnitude of `x`.
+3. `round(x, n=0)` returns `x` rounded to `n` digits, rounding half to even.
 
 
 ## Strings
