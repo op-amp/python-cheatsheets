@@ -122,7 +122,7 @@ size = len(Tuple)
 
 **Declaration**
 
-`Dict = {key1:value1, key2:value2, key3:value3}`
+`Dict = {key1: value1, key2: value2, key3: value3}`
 
 **Concept**
 
@@ -143,7 +143,7 @@ size = len(Tuple)
 EmptyDict = {}
 Dict = dict(zip([1, 2, 3, 4], "spam"))
 Dict = dict([(1, 's'), (2, 'p'), (3, 'a'), (4, 'm')])
-Dict = {"Amy":[1, 2], "Bob":[2, 3], "Cindy":[3, 4]}
+Dict = {"Amy": [1, 2], "Bob": [2, 3], "Cindy": [3, 4]}
 
 # insertion
 Dict["David"] = [4, 5]
@@ -159,7 +159,7 @@ Dict.pop("Bob")
 del Dict["Cindy"]
 
 # extention
-Dict.update({"Bob":[2, 3], "Cindy":[3, 4]})
+Dict.update({"Bob": [2, 3], "Cindy": [3, 4]})
 
 # membership
 key in Dict # keys iteration
