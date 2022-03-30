@@ -158,6 +158,8 @@ A **`global` statement** can change the default behavior and make local assignme
 
 Errors detected during execution are called exceptions (in contrast with syntax errors).
 
+The **`raise` statement** allows the programmer to force a specified exception to occur.
+
 The **`try` statement** can be used to handle selected exceptions. It can have 4 types of clauses:
 
 1. The code that could potentially casue an error is put in the `try` clause.
@@ -166,6 +168,7 @@ The **`try` statement** can be used to handle selected exceptions. It can have 4
 4. An optional `finally` clause will be unconditionally executed as the last task before the `try` statement completes.
 
 If an exception occurs which does not match any exception named in the `except` clauses, it is passed on to outer `try` statements.
+A raise statement inside an `except` clause re-raise the handled exception.
 
 
 ## Modules
@@ -210,8 +213,10 @@ def ordinal(num):
     '''
     Converts numbers to ordinals.
     '''
-    if num < 0:
-        return None
+    if type(num) != int:
+        raise TypeError("ordinal() arg must be int")
+    elif num < 0:
+        raise ValueError("no ordinals for negative integers")
     elif num // 10 % 10 != 1 and 0 < num % 10 < 4:
         suffix = {1:'st', 2:'nd', 3:'rd'}[num % 10]
     else:
