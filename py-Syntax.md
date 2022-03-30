@@ -21,13 +21,6 @@
 	2. Return Values
 	3. Variable Scope
 	4. Exception Handling
-- Classes
-	1. Inheritance
-	2. Instantiation
-	3. Encapsulation
-	4. Self Reference
-	5. Operator Overloading
-	6. Polymorphism
 - Modules
 
 
@@ -175,95 +168,10 @@ The **`try` statement** can be used to handle selected exceptions. It can have 4
 If an exception occurs which does not match any exception named in the `except` clauses, it is passed on to outer `try` statements.
 
 
-## Classes
-
-### Inheritance
-
-A **`class` statement** indicates a class definition.
-It consists of the following:
-
-- The `class` keyword
-- The class name
-- The base classes in a pair of round brackets, indicates the inheritance
-- A colon
-- An indented block of code specifying its attributes
-
-Built-in types can be used as base classes for extension by the user.
-
-### Instantiation
-
-Call the class as a function and use an assignment statement to create a class instance, an object.
-
-Each class in Pyhton is actually an instance of the `type` metaclass.
-Thus a class definition can be rewritten as: `type(name, bases, attributes)`, an instantiation where the bases is a tuple and the attributes is a dictionary.
-
-A **`del` statement** deletes objects or properties on objects.
-
-### Encapsulation
-
-Private attributes, denoted by a single or double underscores as the prefix, prevent data from direct modifications.
-
-A few common special private attributes of objects:
-
-1. `__init__()` is automatically invoked during class instantiation if defined, initializing a new class instance as its constructor.
-2. `__call__()` is invoked when an object is called like a function, to resolve the behaviors of this callable object.
-3. `__str__()` is invoked when `print()` or `str()` function are called on the object and returns the object as a string.
-4. `__class__` refers to the class from which the object was created.
-5. `__doc__` refers to the documentation string (docstring) of that class.
-6. `__dict__` refers to a dictionary used to store the public attributes of an object.
-
-### Self Reference
-
-The first argument of a function in class must be the object itself, oftenly called `self`.
-It refers to the current instance of the class, and is used to access variable and method attributes that belongs to the class.
-
-### Operator Overloading
-
-Most built-in operators which are interpreted as functions can be redefined for class instances.
-
-| Operator | Interpretation |
-|----------|----------------|
-| `a + b`  | `a.__add__(b)` |
-| `a - b`  | `a.__sub__(b)` |
-| `a * b`  | `a.__mul__(b)` |
-| `a ** b` | `a.__pow__(b)` |
-| `a / b`  | `a.__truediv__(b)`  |
-| `a // b` | `a.__floordiv__(b)` |
-| `a % b`  | `a.__mod__(b)` |
-| `a << b` | `a.__lshift__(b)`   |
-| `a << b` | `a.__rshift__(b)`   |
-| `a & b`  | `a.__and__(b)` |
-| `a \| b` | `a.__or__(b)`  |
-| `a ^ b`  | `a.__xor__(b)` |
-| `~a`     | `a.__invert__(b)`   |
-| `a < b`  | `a.__lt__(b)`  |
-| `a <= b` | `a.__le__(b)`  |
-| `a == b` | `a.__eq__(b)`  |
-| `a != b` | `a.__ne__(b)`  |
-| `a > b`  | `a.__gt__(b)`  |
-| `a >= b` | `a.__ge__(b)`  |
-
-### Polymorphism
-
-If multiple types of objects share a same attribute, a common interface can be created by a `def` statement and used.
-
-```python
-class A:
-    def method(self):
-        pass
-class B:
-    def method(self):
-        pass
-
-def interface(object):
-    object.method()
-```
-
-
 ## Modules
 
 Each python program is a module. Usually the module name is just the file name omitting the `.py` suffix.
-To use the functions and object classes inside a module:
+To use a module:
 
 1. Import the module through `import module`.
 
@@ -276,6 +184,40 @@ To use the functions and object classes inside a module:
 	- The function can then be called with no namespace.
 	- Optional `as` following an imported function bounds the function a new name.
 	- Multiple functions can be imported together with their names separated by `,`, and `*` represents all functions.
+
+
+## *Examples*
+
+**Base convertion**
+
+```python
+def base_convert(num, base1, base2):
+    '''
+    Converts numbers in base 1 to base 2.
+    '''
+    if base2 == base1:
+        return num
+    elif num == 0:
+        return 0
+    else:
+        return num % base2 + base_convert(num // base2, base1, base2) * base1
+```
+
+**Ordinal**
+
+```python
+def ordinal(num):
+    '''
+    Converts numbers to ordinals.
+    '''
+    if num < 0:
+        return None
+    elif num // 10 % 10 != 1 and 0 < num % 10 < 4:
+        suffix = {1:'st', 2:'nd', 3:'rd'}[num % 10]
+    else:
+        suffix = 'th'
+    return str(num) + suffix
+```
 
 
 ## *References*
