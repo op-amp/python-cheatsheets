@@ -35,7 +35,10 @@
 ### Assignment
 
 An assignment statement with an operator `=` stores values in variables.
-Multiple assignment is supported in Python.
+
+Multiple assignment is supported using `,` to separate variable names and values.
+
+Conditional assignment is supported using `if` and `else` with the condition in between and values ahead and behind.
 
 
 ## Comments
