@@ -134,7 +134,7 @@ class RomanNum():
         ('I', 1)
     ]
 
-    def __a_to_r(self, anum) -> str:
+    def __a_r(self, anum) -> str:
         if not 0 < anum < 4000:
             raise ValueError("integer value requested to be between 1 and 3999 for RomanNum()")
         rnum = ''
@@ -144,7 +144,7 @@ class RomanNum():
                 anum -= achars
         return rnum
 
-    def __r_to_a(self, rnum) -> int:
+    def __r_a(self, rnum) -> int:
         anum = 0
         for (rchars, achars) in self.reference:
             while rnum.startswith(rchars):
@@ -155,11 +155,14 @@ class RomanNum():
         return anum
 
     def __init__(self, value):
-        if type(value) == int:
-            self.__roman = self.__a_to_r(value)
+        if type(value) == RomanNum:
+            self.__roman = value.roman()
+            self.__arabic = value.arabic()
+        elif type(value) == int:
+            self.__roman = self.__a_r(value)
             self.__arabic = value
         elif type(value) == str:
-            self.__arabic = self.__r_to_a(value)
+            self.__arabic = self.__r_a(value)
             self.__roman = value
         else:
             raise TypeError("RomanNum() only takes a decimal integer or a roman numeral string")
