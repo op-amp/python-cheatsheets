@@ -155,6 +155,9 @@ class RomanNum():
         return anum
 
     def __init__(self, value):
+        '''
+        Initializes or updates the instance.
+        '''
         if type(value) == RomanNum:
             self.__roman = value.roman()
             self.__arabic = value.arabic()
@@ -194,28 +197,51 @@ class RomanNum():
         return len(self.__roman)
 
     def __eq__(self, other):
-        return self.__arabic == int(other)
+        if type(other) == RomanNum:
+            other = other.__arabic
+        return self.__arabic == other or self.__roman == other
     def __ne__(self, other):
-        return self.__arabic != int(other)
+        return not self.__eq__(other)
+
     def __lt__(self, other):
-        return self.__arabic < int(other)
+        if type(other) != float and type(other) != int:
+            other = RomanNum(other).__arabic
+        return self.__arabic < other
     def __le__(self, other):
-        return self.__arabic <= int(other)
+        if type(other) != float and type(other) != int:
+            other = RomanNum(other).__arabic
+        return self.__arabic <= other
     def __gt__(self, other):
-        return self.__arabic > int(other)
+        if type(other) != float and type(other) != int:
+            other = RomanNum(other).__arabic
+        return self.__arabic > other
     def __ge__(self, other):
-        return self.__arabic >= int(other)
+        if type(other) != float and type(other) != int:
+            other = RomanNum(other).__arabic
+        return self.__arabic >= other
 
     def __add__(self, other):
-        return RomanNum(self.__arabic + int(other))
+        if type(other) != float and type(other) != int:
+            other = RomanNum(other).__arabic
+        return RomanNum(int(self.__arabic + other))
     def __sub__(self, other):
-        return RomanNum(self.__arabic - int(other))
+        if type(other) != float and type(other) != int:
+            other = RomanNum(other).__arabic
+        return RomanNum(int(self.__arabic - other))
     def __mul__(self, other):
-        return RomanNum(self.__arabic * int(other))
+        if type(other) != float and type(other) != int:
+            other = RomanNum(other).__arabic
+        return RomanNum(int(self.__arabic * other))
     def __pow__(self, other):
-        return RomanNum(self.__arabic ** int(other))
+        if type(other) != float and type(other) != int:
+            other = RomanNum(other).__arabic
+        return RomanNum(int(self.__arabic ** other))
     def __floordiv__(self, other):
-        return RomanNum(self.__arabic // int(other))
+        if type(other) != float and type(other) != int:
+            other = RomanNum(other).__arabic
+        return RomanNum(int(self.__arabic // other))
     def __mod__(self, other):
-        return RomanNum(self.__arabic % int(other))
+        if type(other) != float and type(other) != int:
+            other = RomanNum(other).__arabic
+        return RomanNum(int(self.__arabic % other))
 ```
