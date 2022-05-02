@@ -190,6 +190,12 @@ class RomanNum():
     __index__ = __int__
     arabic = __int__
 
+    def __float__(self) -> float:
+        '''
+        Returns the corresponding arabic numeral as floating-point.
+        '''
+        return float(self.__arabic)
+
     def __len__(self) -> int:
         '''
         Returns the length of the roman numeral string.
