@@ -10,6 +10,7 @@
 	1. Common Numeric Types
 	2. Arithmetic Operators
 	3. Functions
+	4. Related Modules
 - [Strings](#strings)
 	1. Literals
 	2. Escape Characters
@@ -62,6 +63,11 @@ The type names are also function names (`int()`, `float()`, `str()`, etc.) that 
 1. `pow(x, y)` returns `x` to the power `y`.
 2. `abs(x)` returns absolute value or magnitude of `x`.
 3. `round(x, n=0)` returns `x` rounded to `n` digits, rounding half to even.
+
+### Related Modules
+
+1. [`math`](//docs.python.org/library/math) provides access to the mathematical functions defined by the C standard; cannot be used with complex numbers.
+2. [`cmath`](//docs.python.org/library/cmath) provides access to mathematical functions for complex numbers; will accept all common numeric types.
 
 
 ## Strings
