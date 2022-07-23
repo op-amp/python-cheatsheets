@@ -134,9 +134,10 @@ By default, the content of the placehold aligns right, but a minus sign switch i
 
 1. `string.upper()` returns a string with all letters converted to upper case.
 2. `string.lower()` returns a string with all letters converted to lower case.
-3. `string.isupper()` checks if the string contains at least 1 letter and all letters are uppercased.
-4. `string.islower()` checks if the string contains at least 1 letter and all letters are lowercased.
-5. `string.istitle()` checks if the string contains at least 1 letter and all letters are properly titlecased, i.e. all words start with an upper case letter followed by lower case letters.
+3. `string.title()` returns a titlecased string, i.e. with first letter of each word capitalized.
+4. `string.isupper()` checks if the string contains at least 1 letter and all letters are uppercased.
+5. `string.islower()` checks if the string contains at least 1 letter and all letters are lowercased.
+6. `string.istitle()` checks if the string contains at least 1 letter and all letters are properly titlecased, i.e. with first letter of each word capitalized.
 
 **Character Categories**
 
@@ -144,6 +145,7 @@ By default, the content of the placehold aligns right, but a minus sign switch i
 2. `string.isalnum()` checks if the string is not empty and has only letters and numbers.
 3. `string.isdecimal()` checks if the string is not empty and has only numbers.
 4. `string.isspace()` checks if the string is not empty and has only whitespace.
+5. `string.isidentifier()` checks if the string is a valid identifier in Python.
 
 **Affix**
 
@@ -153,7 +155,13 @@ By default, the content of the placehold aligns right, but a minus sign switch i
 **Separation**
 
 1. `string.split('separator')` splits the string to a list of strings according to the separator string (whitespace if omitted).
-2. `separator.join([string1, string2, ..., stringN])` joins a list of strings to one string with the separator string added between each two.
+2. `separator.join([string1, string2, ..., stringN])` joins a list or tuple of strings to one string with the separator string added between each two.
+
+**Search and Replacement**
+
+1. `string.find(substring)` returns the index of first occurrence of the substring, or -1 if not found.
+2. `string.rfind(substring)` returns the index of last occurrence of the substring, or -1 if not found.
+3. `string.replace(substring, repl)` returns the string with each matching occurrence of the substring replaced by the replacement string.
 
 **Strip**
 
