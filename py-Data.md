@@ -11,124 +11,184 @@
 	2. [Set](#4-set)
 
 
-## Linear Data Structures
-![Linear Structure](py-Linear.png)
-
-### 1. List
+## 1. List
 [↑](#table-of-contents)
 
-**Declaration**
+![Linear Structure](py-Linear.png)
 
-`List = [value1, value2, value3]`
-
-**Concept**
+### Concept
 
 > Lists are mutable sequences of object references accessed by position. (Lutz, 2014)
 
-**Features**
+### Features
 
 * The elements in a list have certain positions in the list, and can be sliced
 * A list can contain any object in Python
 * Every element is mutable
 * A list is dynamic
 
-**Common Manipulations**
-
-``` python
-# declaration
-EmptyList = []
-List = list("spam")
-List = ['A', 'B', 'C']
-
-# insertion
-List.append('G')
-List.insert(3, 'D')
-List[4:4] = 'E'
-
-# access
-List[-1] = 'F'
-val = List[0]
-pos = List.index('B')
-
-# deletion
-val = List.pop()
-val = List.pop(3)
-List.remove('E')
-del List[0:3]
-
-# extention
-List.extend(['B', 'C'])
-List[len(List):] = ['D', 'E', 'F']
-List[:0] = ['A']
-
-# order
-List.reverse()
-List.sort(key = None, reverse = False)
-
-# membership
-val in List # elements iteration
-freq = List.count('A')
-size = len(List)
-
-# clearance
-List.clear()
-```
-
--------------------------------------------------------
-
-### 2. Tuple
-[↑](#table-of-contents)
+### Common Manipulations
 
 **Declaration**
 
-`Tuple = (value1, value2, value3)`
+``` python
+EmptyList = []
+List = list("spam")
+List = ['A', 'B', 'C']
+```
 
-**Concept**
+**Access**
+
+``` python
+val = List[0]
+val, vprime = List[0:2] # slice
+SubList = List[0:2]
+```
+
+**Membership**
+
+``` python
+mem = 'A' in List
+pos = List.index('A')
+freq = List.count('A')
+size = len(List)
+```
+
+1. `list.index(value)` returns the lowest index of the specified value or raise `ValueError` if not found.
+2. `list.count(value)` returns the number of times the specified value occurs.
+
+**Modification**
+
+```python
+List[-1] = 'Z'
+List[0:2] = 'X', 'Y'
+```
+
+**Iteration**
+
+```python
+val in List
+index, val in enumerate(List)
+```
+
+**Insertion**
+
+``` python
+List.append('E')
+List.insert(3, 'D')
+```
+
+1. `list.append(value)` adds the value to the end of the list.
+2. `list.insert(index, value)` inserts the value at the specified index in the list.
+
+**Extention**
+
+``` python
+List[len(List):] = ['D', 'E', 'F']
+List[:0] = ['A']
+List += ['G'] # concatenation
+List *= 2 # replication
+```
+
+**Deletion**
+
+``` python
+val = List.pop()
+List.remove('A')
+del List[1:3]
+```
+
+1. `list.pop(index=-1)` removes the element at the given index.
+2. `list.remove(value)` remove the first occurrence of the element or raise `ValueError` if not found.
+
+**Order**
+
+``` python
+List.reverse()
+List.sort()
+sorted(List, key = str.lower, reverse = True)
+```
+
+1. `list.reverse()` reverses the order of the elements.
+2. `list.sort(key=None, reverse=False)` sorts the elements by value. The key parameter is a callable serves as a key for the sort comparison.
+
+**Randomization**
+
+```python
+import random
+val = random.choice(List)
+random.shuffle(List)
+```
+
+**Clearance**
+
+``` python
+List.clear()
+```
+
+## 2. Tuple
+[↑](#table-of-contents)
+
+### Concept
 
 > Tuples are immutable sequences of object references accessed by position. Function as fixed lists. (Lutz, 2014)
 
-**Features**
+### Features
 
 * The elements are ordered, and can be sliced
 * An element in a tuple can be any object in Python
 * Every single element is immutable
 * A tuple is static
 
-**Common Manipulations**
+### Common Manipulations
+
+**Declaration**
 
 ```python
-# declaration
 EmptyTuple = ()
 Tuple = tuple("spam")
 Tuple = ([1, 0, 0], [0, 1, 0], [0, 0, 1])
+```
 
-# access
+**Access**
+
+``` python
 val = Tuple[0]
-pos = Tuple.index([0, 1, 0])
+val, vprime = Tuple[0:2] # slice
+SubTuple = Tuple[0:2]
+```
 
-# membership
-val in Tuple # elements iteration
+**Membership**
+
+``` python
+[0, 1, 0] in Tuple
+pos = Tuple.index([0, 1, 0])
 freq = Tuple.count([0, 1, 0])
 size = len(Tuple)
 ```
 
--------------------------------------------------------
+1. `tuple.index(value)` returns the lowest index of the specified value or raise `ValueError` if not found.
+2. `tuple.count(value)` returns the number of times the specified value occurs.
 
-## Non-linear Data Structures
-![Non-linear Structure](py-Hash.png)
+**Iteration**
 
-### 3. Dictionary
+```python
+val in Tuple
+index, val in enumerate(Tuple)
+```
+
+---
+
+## 3. Dictionary
 [↑](#table-of-contents)
 
-**Declaration**
+![Non-linear Structure](py-Hash.png)
 
-`Dict = {key1: value1, key2: value2, key3: value3}`
-
-**Concept**
+### Concept
 
 > Dictionaries are mutable mappings of object references accessed by key. They are unordered tables that maps keys to values, implemented internally as dynamically expandable hash tables. (Lutz, 2014)
 
-**Features**
+### Features
 
 * Data in a dictionary must be in the form of pairs of a key and a value, and the keys acts as indexes of the values
 * Logically, a key must be unique within a dictionary, but two values can be identical
@@ -136,7 +196,11 @@ size = len(Tuple)
 * The keys are not changeable, but the values are mutable
 * A dictionary is dynamic
 
-**Common Manipulations**
+### Common Manipulations
+
+**Declaration**
+
+`Dict = {key1: value1, key2: value2, key3: value3}`
 
 ```python
 # declaration
@@ -149,7 +213,7 @@ Dict = {"Amy": [1, 2], "Bob": [2, 3], "Cindy": [3, 4]}
 Dict["David"] = [4, 5]
 
 # access
-Dict["David"] = "Hello"
+Dict["David"] = "Hello" # modification
 val = Dict["Amy"]
 val = Dict.get("Davis")
 
@@ -162,6 +226,7 @@ del Dict["Cindy"]
 Dict.update({"Bob": [2, 3], "Cindy": [3, 4]})
 
 # membership
+"Amy" in Dict
 key in Dict # keys iteration
 Dict.keys()
 Dict.values()
@@ -172,20 +237,14 @@ size = len(Dict)
 Dict.clear()
 ```
 
--------------------------------------------------------
-
-### 4. Set
+## 4. Set
 [↑](#table-of-contents)
 
-**Declaration**
-
-`Set = {key1, key2, key3}`
-
-**Concept**
+### Concept
 
 > Sets are mutable and unordered collections of unique and immutable objects. Function as a key-only (value-less) dictionaries. (Lutz, 2014)
 
-**Features**
+### Features
 
 * The elements are not indexed
 * Two elements cannot be identical in a set
@@ -193,7 +252,11 @@ Dict.clear()
 * A single element is not mutable
 * A set is dynamic
 
-**Common Manipulations**
+### Common Manipulations
+
+**Declaration**
+
+`Set = {key1, key2, key3}`
 
 ```python
 # declaration
@@ -214,6 +277,7 @@ Set.update({200})
 Set |= EmptySet
 
 # membership
+200 in Set
 key in Set # elements iteration
 size = len(Set)
 
