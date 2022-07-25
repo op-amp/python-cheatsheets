@@ -49,7 +49,7 @@ Variables do not directly store values, instead, they store references to the co
 This reference, i.e. the identity of memory locations, can be obtained by `id()` function.
 
 - Normally variable assignment are through copying the reference. Thus when modifying mutable values, every variable is affected.
-- To avoid this behavior, use `copy.copy()` in the copy module to make a duplicate copy of a mutable value, or `copy.deepcopy()` for inner mutable values as well.
+- To avoid this behavior, use `copy.copy()` in the `copy` module to make a duplicate copy of a mutable value, or `copy.deepcopy()` for inner mutable values as well.
 
 
 ## Comments
