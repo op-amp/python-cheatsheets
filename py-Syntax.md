@@ -14,8 +14,9 @@
 	1. Print
 	2. Input
 - Flow Control
-	1. Conditions
-	2. Loops
+	1. Condition
+	2. Loop
+	3. Pattern Matching
 - Functions
 	1. Parameters
 	2. Return Values
@@ -70,7 +71,7 @@ Multiple objects (possibly of different types) can be printed if they are listed
 
 ## Flow Control
 
-### Conditions
+### Condition
 
 An **`if` statement** executes when its conditional expression is evaluated as `True`.
 It consists of the following:
@@ -95,7 +96,7 @@ It consists of the following:
 - A colon
 - An indented block of code (the `else` clause)
 
-### Loops
+### Loop
 
 A **`while` statement** executes repeatedly as long as its conditional expression is evaluated as `True`.
 It consists of the following:
@@ -118,6 +119,22 @@ A **`break` statement** causes the execution to immediately exit the loop.
 A **`continue` statement** causes the execution to immediately jump back to the start of the loop and reevaluate the conditional expression.
 
 An **`else` statement** that follows a loop executes when the loop exits normally (i.e. not caused by a `break` statement).
+
+### Pattern Matching
+
+A **`match` statement** takes an expression and compares its value to successive patterns given as one or more `case` blocks; only the first pattern that matches gets executed, and none executed if no matches.
+It consists of the following:
+
+- The `match` keyword
+- An evaluable expression
+- A colon
+- An indented block of code with one or more **`case` statements**, each consists of
+	- The `case` keyword
+	- A pattern
+	- A colon
+	- An indented block of code to be executed when the pattern is matched
+
+Pattern literals in the `case` statement can be combined by `|` to form a single pattern; character `_` acts as a wildcard and never fails to match.
 
 
 ## Functions
