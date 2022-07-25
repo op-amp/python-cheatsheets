@@ -9,7 +9,6 @@
 - Comments
 	1. Single Line
 	2. Multiline
-	3. Pass
 - Console I/O
 	1. Print
 	2. Input
@@ -17,6 +16,7 @@
 	1. Condition
 	2. Loop
 	3. Pattern Matching
+	4. Pass
 - Functions
 	1. Parameters
 	2. Return Values
@@ -51,10 +51,6 @@ Any text for the rest of the line following a hash mark `#` is part of a comment
 ### Multiline Comments
 
 Multiline strings are often used for comments that span multiple lines.
-
-### Pass
-
-The **`pass` statement** is a null statement. `pass` is not ignored by the interpreter. However, nothing happens when it is executed.
 
 
 ## Console I/O
@@ -136,6 +132,10 @@ It consists of the following:
 
 Pattern literals in the `case` statement can be combined by `|` to form a single pattern; character `_` acts as a wildcard and never fails to match.
 
+### Pass
+
+The **`pass` statement** is a null statement. `pass` is not ignored by the interpreter. However, nothing happens when it is executed.
+
 
 ## Functions
 
@@ -198,15 +198,15 @@ To use a module:
 
 1. Import the module through `import module`.
 
-	- The module namespace must then be stated in a function call, likely `module.function()`.
-	- Optional `as` following an imported module bounds the module a new name.
-	- Multiple modules can be imported together with their names separated by `,`.
+	1. The module namespace must then be stated in a function call, likely `module.function()`.
+	2. Optional `as` following an imported module bounds the module a new name.
+	3. Multiple modules can be imported together with their names separated by `,`.
 
 2. Import specific functions from the module through `from module import function`.
 
-	- The function can then be called with no namespace.
-	- Optional `as` following an imported function bounds the function a new name.
-	- Multiple functions can be imported together with their names separated by `,`, and `*` represents all functions.
+	1. The function can then be called with no namespace.
+	2. Optional `as` following an imported function bounds the function a new name.
+	3. Multiple functions can be imported together with their names separated by `,`, and `*` represents all functions.
 
 
 ## *Examples*
