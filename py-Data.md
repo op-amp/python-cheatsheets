@@ -3,10 +3,10 @@
 
 ###### _Table of Contents_
 
-- Linear Structures
+- Linear Structures (Sequences)
 	1. [List](#1-list)
 	2. [Tuple](#2-tuple)
-- Non-linear Structures
+- Non-linear Structures (Map and Set)
 	1. [Dictionary](#3-dictionary)
 	2. [Set](#4-set)
 
@@ -32,16 +32,23 @@
 **Declaration**
 
 ``` python
+EmptyList = list()
 EmptyList = []
 List = list("spam")
-List = ['A', 'B', 'C']
+List = ['A', 'b', 'c']
+
+# comprehension
+List = list(v.upper() for v in List if len(v) > 0)
+List = [v.upper() for v in List if len(v) > 0]
 ```
 
 **Access**
 
 ``` python
 val = List[0]
-val, vprime = List[0:2] # slice
+
+# slice
+val, vprime = List[0:2]
 SubList = List[0:2]
 ```
 
@@ -51,24 +58,25 @@ SubList = List[0:2]
 mem = 'A' in List
 pos = List.index('A')
 freq = List.count('A')
+
 size = len(List)
 ```
 
-1. `list.index(value)` returns the lowest index of the specified value or raise `ValueError` if not found.
+1. `list.index(value)` returns the lowest index of the specified value or raises `ValueError` if not found.
 2. `list.count(value)` returns the number of times the specified value occurs.
-
-**Modification**
-
-```python
-List[-1] = 'Z'
-List[0:2] = 'X', 'Y'
-```
 
 **Iteration**
 
 ```python
 val in List
 index, val in enumerate(List)
+```
+
+**Modification**
+
+```python
+List[-1] = 'Z'
+List[0:2] = 'X', 'Y'
 ```
 
 **Insertion**
@@ -84,10 +92,14 @@ List.insert(3, 'D')
 **Extention**
 
 ``` python
-List[len(List):] = ['D', 'E', 'F']
+List.extend(['E', 'F'])
+List[len(List):] = ['G', 'H']
 List[:0] = ['A']
-List += ['G'] # concatenation
-List *= 2 # replication
+
+# concatenation
+List += ['L', 'M', 'N']
+# replication
+List *= 2
 ```
 
 **Deletion**
@@ -98,8 +110,8 @@ List.remove('A')
 del List[1:3]
 ```
 
-1. `list.pop(index=-1)` removes the element at the given index.
-2. `list.remove(value)` remove the first occurrence of the element or raise `ValueError` if not found.
+1. `list.pop(index=-1)` removes and returns an element at the given index or raises `IndexError` if index out of range.
+2. `list.remove(value)` remove the first occurrence of the element or raises `ValueError` if not found.
 
 **Order**
 
@@ -145,16 +157,22 @@ List.clear()
 **Declaration**
 
 ```python
+EmptyTuple = tuple()
 EmptyTuple = ()
 Tuple = tuple("spam")
 Tuple = ([1, 0, 0], [0, 1, 0], [0, 0, 1])
+
+# comprehension
+Tuple = tuple(v for v in Tuple if max(v) > 0)
 ```
 
 **Access**
 
 ``` python
 val = Tuple[0]
-val, vprime = Tuple[0:2] # slice
+
+# slice
+val, vprime = Tuple[0:2]
 SubTuple = Tuple[0:2]
 ```
 
@@ -164,10 +182,11 @@ SubTuple = Tuple[0:2]
 [0, 1, 0] in Tuple
 pos = Tuple.index([0, 1, 0])
 freq = Tuple.count([0, 1, 0])
+
 size = len(Tuple)
 ```
 
-1. `tuple.index(value)` returns the lowest index of the specified value or raise `ValueError` if not found.
+1. `tuple.index(value)` returns the lowest index of the specified value or raises `ValueError` if not found.
 2. `tuple.count(value)` returns the number of times the specified value occurs.
 
 **Iteration**
@@ -200,40 +219,89 @@ index, val in enumerate(Tuple)
 
 **Declaration**
 
-`Dict = {key1: value1, key2: value2, key3: value3}`
+```python
+EmptyDict = dict()
+EmptyDict = {}
+Dict = dict([(1, 's'), (2, 'p'), (3, 'a'), (4, 'm')])
+Dict = dict(zip([1, 2, 3, 4], "spam"))
+Dict = {"Alice": "TCP", "Bob": "3-Way", "Cindy": "Handshake"}
+
+# comprehension
+Dict = dict((k, Dict[k]) for k in Dict if k.istitle())
+Dict = {k: Dict[k] for k in Dict if k.istitle()}
+```
+
+**Access**
 
 ```python
-# declaration
-EmptyDict = {}
-Dict = dict(zip([1, 2, 3, 4], "spam"))
-Dict = dict([(1, 's'), (2, 'p'), (3, 'a'), (4, 'm')])
-Dict = {"Amy": [1, 2], "Bob": [2, 3], "Cindy": [3, 4]}
+val = Dict["Alice"]
+val = Dict.get("Alice", '')
+val = Dict.setdefault("David", "Hello")
+```
 
-# insertion
-Dict["David"] = [4, 5]
+1. `dict.get(key, fallback=None)` returns the value for the specified key or fallback value if the key is not found.
+2. `dict.setdefault(key, default=None)` first inserts key with default value if the key does not exist, and then returns the value for the key.
 
-# access
-Dict["David"] = "Hello" # modification
-val = Dict["Amy"]
-val = Dict.get("Davis")
+**Membership**
 
-# deletion
-Dict.popitem()
-Dict.pop("Bob")
-del Dict["Cindy"]
+```python
+mem = "Alice" in Dict
+mem = "Alice" in Dict.keys()
+mem = "TCP" in Dict.values()
+mem = ("Alice", "TCP") in Dict.items()
 
-# extention
-Dict.update({"Bob": [2, 3], "Cindy": [3, 4]})
-
-# membership
-"Amy" in Dict
-key in Dict # keys iteration
-Dict.keys()
-Dict.values()
-Dict.items()
 size = len(Dict)
+```
 
-# clearance
+**Iteration**
+
+```python
+key in Dict
+key in Dict.keys()
+val in Dict.values()
+key, val in Dict.items()
+```
+
+**Modification**
+
+```python
+Dict["David"] = {"SYN": 1}
+```
+
+**Insertion**
+
+```python
+Dict["Eva"] = {"SYN": 1, "ACK": 1}
+```
+
+**Deletion**
+
+```python
+key, val = Dict.popitem()
+val = Dict.pop("Cindy")
+del Dict["David"]
+```
+
+1. `dict.popitem()` removes and returns a key-value pair in LIFO order or raises `KeyError` if the dictionary is empty.
+2. `dict.pop(key)` removes an element having the given key and returns its value, or raises `KeyError` if not found. Optional second parameter can serve as default return value and prevent `KeyError` from being raised.
+
+**Extention**
+
+```python
+Dict.update({"Frank": {"ACK": 1}, "Bob": "Three-Way"})
+```
+
+**Pretty Printing**
+
+```python
+import pprint
+pprint.pprint(Dict)
+print(pprint.pformat(Dict))
+```
+
+**Clearance**
+
+```python
 Dict.clear()
 ```
 
@@ -256,40 +324,80 @@ Dict.clear()
 
 **Declaration**
 
-`Set = {key1, key2, key3}`
-
 ```python
-# declaration
 EmptySet = set()
 Set = set("spam")
-Set = {100, 200, 300}
+Set = {101, 202, 303}
 
-# insertion
-Set.add(400)
+# comprehension
+Set = set(v % 10 for v in Set if type(v) == int)
+Set = {v % 10 for v in Set if type(v) == int}
+```
 
-# deletion
-Set.remove(400)
-Set.discard(500)
-key = Set.pop()
+**Membership**
 
-# extention
-Set.update({200})
-Set |= EmptySet
+```python
+mem = 2 in Set
 
-# membership
-200 in Set
-key in Set # elements iteration
 size = len(Set)
+```
 
-# mathematical operations
-(Set - EmptySet) == Set.difference(EmptySet)
-(Set ^ EmptySet) == Set.symmetric_difference(EmptySet)
-(Set | EmptySet) == Set.union(EmptySet)
-(Set & EmptySet) == Set.intersection(EmptySet)
-(Set <= EmptySet) == Set.issubset(EmptySet)
-(Set >= EmptySet) == Set.issuperset(EmptySet)
+**Iteration**
 
-# clearance
+```python
+key in Set
+```
+
+**Insertion**
+
+```python
+Set.add(4)
+```
+
+**Deletion**
+
+```python
+key = Set.pop()
+Set.remove(4)
+Set.discard(5)
+```
+
+1. `set.pop()` randomly removes a key and returns the removed key or raises `TypeError` if the set is empty.
+2. `set.remove(key)` removes the specified key or raises `KeyError` if the key does not exist.
+3. `set.discard(key)` removes the specified key or do nothing if the key does not exist.
+
+**Extention**
+
+```python
+Set.update({6, 7})
+Set |= {8, 9}
+```
+
+**Mathematical Operations**
+
+```python
+sub = Set <= set(range(0,9))
+sub = Set.issubset(range(0,9))
+
+sup = Set >= set({6: 110})
+sup = Set.issuperset({6: 110})
+
+un = Set | {1, 2, 3, 4, 5}
+un = Set.union({1, 2, 3, 4, 5})
+
+in = Set & {0, 1, 2}
+in = Set.intersection({0, 1, 2})
+
+diff = Set - {0, 1, 2}
+diff = Set.difference({0, 1, 2})
+
+sdiff = Set ^ {0, 1, 2}
+sdiff = Set.symmetric_difference({0, 1, 2})
+```
+
+**Clearance**
+
+```python
 Set.clear()
 ```
 
