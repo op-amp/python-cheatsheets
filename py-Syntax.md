@@ -6,6 +6,7 @@
 - Variables
 	1. Variable Name
 	2. Assignment
+	3. References
 - Comments
 	1. Single Line
 	2. Multiline
@@ -40,6 +41,15 @@ An assignment statement with an operator `=` stores values in variables.
 Multiple assignment is supported using `,` to separate variable names and values.
 
 Conditional assignment is supported using `if` and `else` with the condition in between and values ahead and behind.
+
+### References
+
+Variables do not directly store values, instead, they store references to the computer memory locations where the values are stored.
+
+This reference, i.e. the identity of memory locations, can be obtained by `id()` function.
+
+- Normally variable assignment are through copying the reference. Thus when modifying mutable values, every variable is affected.
+- To avoid this behavior, use `copy.copy()` in the copy module to make a duplicate copy of a mutable value, or `copy.deepcopy()` for inner mutable values as well.
 
 
 ## Comments
