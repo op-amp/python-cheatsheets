@@ -255,6 +255,9 @@ Boolean data type has only two values: `True` and `False`.
 | `or`      | Union        |
 | `not`     | Complement   |
 
+- A series of values connected by `and` returns the first value evaluated `False` or the last value.
+- A series of values connected by `or` returns the first value evaluated `True` or the last value.
+
 
 ## None Type
 
