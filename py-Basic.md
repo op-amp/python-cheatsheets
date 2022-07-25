@@ -39,7 +39,7 @@ The type names are also function names (`int()`, `float()`, `str()`, etc.) that 
 
 ### Type Hints
 
-The typing module provides runtime support for type hints.
+The `typing` module provides runtime support for type hints.
 
 ```python
 from typing import Any, Union, Optional, Callable, Generic, TypeVar, TypeAlias
