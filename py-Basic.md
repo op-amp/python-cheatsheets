@@ -249,14 +249,14 @@ Boolean data type has only two values: `True` and `False`.
 
 ### Boolean Operators
 
-| Operators | Descriptions |
-|-----------|--------------|
-| `and`     | Intersection |
-| `or`      | Union        |
-| `not`     | Complement   |
+**Binary Operators**
 
-- A series of values connected by `and` returns the first value evaluated `False` or the last value.
-- A series of values connected by `or` returns the first value evaluated `True` or the last value.
+- `and` - Intersection. A series of values connected by `and` returns the first value evaluated `False` or the last value.
+- `or` - Union. A series of values connected by `or` returns the first value evaluated `True` or the last value.
+
+**Unary Operator**
+
+- `not` - Complement.
 
 
 ## None Type
@@ -268,8 +268,8 @@ None data type has only one value: `None`, representing the null value or the nu
 
 A union object holds the value of the bitwise or `|` operation on multiple type objects, and creates a Union Type.
 
-| Type Hints           | Shorthand Syntax |
-|----------------------|------------------|
+| [Type Hints](#type-hints) | Shorthand Syntax |
+|---------------------------|------------------|
 | `typing.Union[X, Y]` | `X \| Y`    |
 | `typing.Optional[X]` | `X \| None` |
 
