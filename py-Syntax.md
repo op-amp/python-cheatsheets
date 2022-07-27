@@ -16,13 +16,14 @@
 - Flow Control
 	1. Condition
 	2. Loop
-	3. Pattern Matching
-	4. Pass
+	3. Pass
+- Pattern Matching
+- Exception Handling
 - Functions
 	1. Parameters
 	2. Return Values
 	3. Variable Scope
-	4. Exception Handling
+	4. Decorators
 - Modules
 
 
@@ -44,12 +45,23 @@ Conditional assignment is supported using `if` and `else` with the condition in 
 
 ### References
 
-Variables do not directly store values, instead, they store references to the computer memory locations where the values are stored.
+Variables do not directly store values. Instead, they store references to computer memory locations where the values are stored.
+
+**Object identity**
 
 This reference, i.e. the identity of memory locations, can be obtained by `id()` function.
 
-- Normally variable assignment are through copying the reference. Thus when modifying mutable values, every variable is affected.
-- To avoid this behavior, use `copy.copy()` in the `copy` module to make a duplicate copy of a mutable value, or `copy.deepcopy()` for inner mutable values as well.
+**Shallow and deep copy**
+
+In contrast with C, where each variable occupy certain memory space,
+
+![C memory](https://files.realpython.com/media/c_memory3.5afe110faf4d.png)
+
+Normally variable assignment in python are through copying the reference. Thus when modifying mutable values, every variable will be affected.
+
+![Python memory](https://files.realpython.com/media/py_memory3_1.ea43471d3bf6.png)
+
+To avoid this behavior, use `copy.copy()` in the `copy` module to make a duplicate copy of a mutable value, or `copy.deepcopy()` for inner mutable values as well.
 
 
 ## Comments
@@ -126,7 +138,12 @@ A **`continue` statement** causes the execution to immediately jump back to the 
 
 An **`else` statement** that follows a loop executes when the loop exits normally (i.e. not caused by a `break` statement).
 
-### Pattern Matching
+### Pass
+
+A **`pass` statement** is a null statement. `pass` is not ignored by the interpreter. However, nothing happens when it is executed.
+
+
+## Pattern Matching
 
 A **`match` statement** takes an expression and compares its value to successive patterns given as one or more `case` blocks; only the first pattern that matches gets executed, and none executed if no matches.
 It consists of the following:
@@ -134,20 +151,31 @@ It consists of the following:
 - The `match` keyword
 - An evaluable expression
 - A colon
-- An indented block of code with one or more **`case` statements**, each consists of
-	- The `case` keyword
-	- A pattern
-	- A colon
-	- An indented block of code to be executed when the pattern is matched
+- An indented block of code with one or more `case` clauses, each with code to be executed when the pattern is matched
 
-Pattern literals in the `case` statement can be combined by `|` to form a single pattern; character `_` acts as a wildcard and never fails to match.
+Literals in the `case` statement can be combined by `|` to form a single pattern; `_` or any identifier acts as a wildcard that always matches.
 
-### Pass
 
-The **`pass` statement** is a null statement. `pass` is not ignored by the interpreter. However, nothing happens when it is executed.
+## Exception Handling
+
+Errors detected during execution are called exceptions (in contrast with syntax errors).
+
+A **`raise` statement** allows the programmer to force a specified exception to occur.
+
+A **`try` statement** can be used to handle selected exceptions. It can have 4 types of clauses:
+
+1. The code that could potentially casue an error is put in the `try` clause.
+2. The program execution moves to the corresponding `except` clause if an error happens.
+3. An optional `else` clause following all `except` clauses will be executed if the try clause does not raise an exception.
+4. An optional `finally` clause will be unconditionally executed as the last task before the `try` statement completes.
+
+If an exception occurs which does not match any exception named in the `except` clauses, it is passed on to outer `try` statements.
+A raise statement inside an `except` clause re-raise the handled exception.
 
 
 ## Functions
+
+A function returns a value based on the given arguments with potentially generated side effects.
 
 ### Parameters
 
@@ -184,21 +212,38 @@ In a local scope, whenever a variable is to be written (at the left side of `=` 
 
 A **`global` statement** can change the default behavior and make local assignments directly refer to the global variable. No local variable will be initialized then.
 
-### Exception Handling
+### Decorators
 
-Errors detected during execution are called exceptions (in contrast with syntax errors).
+A function decorator is a special function that wraps another function. It takes a function as the only argument, and completes tasks based on the supplied function.
 
-The **`raise` statement** allows the programmer to force a specified exception to occur.
+If a decorator requires other arguments, define an outer function that handles the arguments to the decorator and returns the decorator.
 
-The **`try` statement** can be used to handle selected exceptions. It can have 4 types of clauses:
+```python
+def converter(default=None):
+    def decorator(func):
+        def conv_no_error(value):
+            try:
+                result = func(value)
+                return result
+            except (ValueError, TypeError):
+                return default
+        return conv_no_error
+    return decorator
+```
 
-1. The code that could potentially casue an error is put in the `try` clause.
-2. The program execution moves to the corresponding `except` clause if an error happens.
-3. An optional `else` clause following all `except` clauses will be executed if the try clause does not raise an exception.
-4. An optional `finally` clause will be unconditionally executed as the last task before the `try` statement completes.
+To use a decorator, decorate a function during its definition by
 
-If an exception occurs which does not match any exception named in the `except` clauses, it is passed on to outer `try` statements.
-A raise statement inside an `except` clause re-raise the handled exception.
+```python
+@converter(default=0)
+def integer(value):
+    return int(value)
+```
+
+Or decorate an already defined function by
+
+```python
+Int = converter(default=0)(int)
+```
 
 
 ## Modules
