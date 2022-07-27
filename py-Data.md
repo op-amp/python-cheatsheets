@@ -22,10 +22,10 @@
 
 ### Features
 
-* The elements in a list have certain positions in the list, and can be sliced
-* A list can contain any object in Python
-* Every element is mutable
-* A list is dynamic
+* The elements are ordered and have certain positions in the list
+* A list can be sliced
+* An element in a list can be any object in Python
+* A list is dynamic and mutable
 
 ### Common Manipulations
 
@@ -147,10 +147,10 @@ List.clear()
 
 ### Features
 
-* The elements are ordered, and can be sliced
+* The elements are ordered
+* A tuple can be sliced
 * An element in a tuple can be any object in Python
-* Every single element is immutable
-* A tuple is static
+* A tuple is static and immutable
 
 ### Common Manipulations
 
@@ -212,8 +212,7 @@ index, val in enumerate(Tuple)
 * Data in a dictionary must be in the form of pairs of a key and a value, and the keys acts as indexes of the values
 * Logically, a key must be unique within a dictionary, but two values can be identical
 * The keys cannot be mutable objects, but the values can take any object in Python
-* The keys are not changeable, but the values are mutable
-* A dictionary is dynamic
+* A dictionary is dynamic and mutable
 
 ### Common Manipulations
 
@@ -317,8 +316,7 @@ Dict.clear()
 * The elements are not indexed
 * Two elements cannot be identical in a set
 * The elements cannot be mutable objects
-* A single element is not mutable
-* A set is dynamic
+* A set is dynamic and mutable
 
 ### Common Manipulations
 
