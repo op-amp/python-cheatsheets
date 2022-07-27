@@ -244,8 +244,8 @@ Boolean data type has only two values: `True` and `False`.
 | `>`       | Greater than |
 | `<=`      | Less than or equal to    |
 | `>=`      | Greater than or equal to |
-| `is`      | Object identity 			|
-| `is not`  | Negated object identity 	|
+| `is`      | Object identity (memory address) |
+| `is not`  | Negated object identity          |
 
 ### Boolean Operators
 
