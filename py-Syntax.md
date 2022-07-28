@@ -24,6 +24,7 @@
 	2. Return Values
 	3. Variable Scope
 	4. Decorators
+- Anonymous Functions
 - Modules
 
 
@@ -244,6 +245,12 @@ Or decorate an already defined function by
 ```python
 Int = converter(default=0)(int)
 ```
+
+## Anonymous Functions
+
+An anonymous function is a function that is defined without a name by `lambda` keyword in the form of `lambda arguments: expression`.
+
+A lambda function can have any number of arguments but only one expression, which is evaluated and returned.
 
 
 ## Modules
