@@ -35,7 +35,7 @@
 EmptyList = list()
 EmptyList = []
 List = list("spam")
-List = ['A', 'b', 'c']
+List = ['', 'A', 'b', 'c']
 
 # comprehension
 List = list(v.upper() for v in List if len(v) > 0)
@@ -70,6 +70,11 @@ size = len(List)
 ```python
 val in List
 index, val in enumerate(List)
+
+# map
+map(lambda v: v.upper(), List)
+# filter
+filter(lambda v: len(v) > 0, List)
 ```
 
 **Modification**
@@ -194,6 +199,11 @@ size = len(Tuple)
 ```python
 val in Tuple
 index, val in enumerate(Tuple)
+
+# map
+map(lambda v: v, Tuple)
+# filter
+filter(lambda v: max(v) > 0, Tuple)
 ```
 
 ---
@@ -259,6 +269,11 @@ key in Dict
 key in Dict.keys()
 val in Dict.values()
 key, val in Dict.items()
+
+# map
+map(lambda k: (k, Dict[k]), Dict)
+# filter
+filter(lambda k: k.istitle(), Dict)
 ```
 
 **Modification**
@@ -328,8 +343,8 @@ Set = set("spam")
 Set = {101, 202, 303}
 
 # comprehension
-Set = set(v % 10 for v in Set if type(v) == int)
-Set = {v % 10 for v in Set if type(v) == int}
+Set = set(k % 10 for k in Set if isinstance(k, int))
+Set = {k % 10 for k in Set if isinstance(k, int)}
 ```
 
 **Membership**
@@ -344,6 +359,11 @@ size = len(Set)
 
 ```python
 key in Set
+
+# map
+map(lambda k: k % 10, Set)
+# filter
+filter(lambda k: isinstance(k, int), Set)
 ```
 
 **Insertion**
