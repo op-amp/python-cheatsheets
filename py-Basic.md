@@ -19,6 +19,8 @@
 	3. Length
 	4. String Operators
 	5. Methods
+	6. Special Prefixes
+	7. Unicode code point
 - [Boolean Type](#boolean-type)
 	1. Boolean Values
 	2. Comparison Operators
@@ -174,8 +176,9 @@ By default, the content of the placehold aligns right, but a minus sign switch i
 
 **Separation**
 
-1. `string.split('separator')` splits the string to a list of strings according to the separator string (whitespace if omitted).
-2. `separator.join([string1, string2, ..., stringN])` joins a list or tuple of strings to one string with the separator string added between each two.
+1. `string.split(separator=' ')` splits a string to a list of strings according to the separator string, with the separator omiited.
+2. `string.partition()` splits a string into three parts, the text before the separator string, the separator itself and the text after it.
+3. `separator.join([string1, string2, ..., stringN])` joins a list or tuple of strings to one string with the separator string added between each two.
 
 **Search and Replacement**
 
@@ -226,6 +229,25 @@ The placeholder is defined by curly brackets `{}` that hold:
 | `G`            | General format (uppercase E) 						|
 | `%`            | Percentage format 									|
 | `c`            | Corresponding Unicode character 						|
+
+### Special Prefixes
+
+**Raw Strings**
+
+Place an `r` before the beginning quotation mark of a string to make it a raw string.
+
+A raw string completely ignores all escape characters and prints any backslash that appears in the string.
+
+**Formatted Strings**
+
+Formatted strings have an `f` prefix before the starting quotation mark.
+
+The expressions placed directly inside the braces will be evaluated and interpolated in the string.
+
+### Unicode Code Point
+
+- The `ord()` function gets the code point of a one-character string;
+- The `chr()` function gets the one-character string of an integer code point.
 
 
 ## Boolean Type
