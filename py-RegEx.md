@@ -14,8 +14,9 @@
 	3. Set
 	4. Group
 	5. Or
-	6. Quantifiers
-	7. Start / End
+	6. Wildcard
+	7. Quantifiers
+	8. Start / End
 
 
 ## RE Module
