@@ -5,7 +5,7 @@
 
 - [RE Module](#re-module)
 	1. Functions
-	2. Constants
+	2. Flag Constants
 	3. [Regular Expression Objects](#regular-expression-objects)
 	4. [Match Objects](#match-objects)
 - [Pattern Syntax](#pattern-syntax)
@@ -37,8 +37,6 @@ result = prog.search(string)
 6. `re.finditer(pattern, string, flags=0)` returns an iterator yielding match objects over all non-overlapping matches in the order found.
 7. `re.sub(pattern, repl, string, count=0, flags=0)` returns the string obtained by replacing the non-overlapping occurrences of the pattern in the string by the replacement string or function. A non-negative integer can be used to specify the maximum number of pattern occurrences to be replaced.
 8. `re.split(pattern, string, maxsplit=0, flags=0)` splits the string by the occurrences of the pattern and returns the resultant list. A non-negative integer can be used to specify the number of splits, and the remainder of the string is returned as the final element of the list.
-
-Usually for the pattern, a raw string notation (an `r` prefixes the string) is used to exempt python from escaping backslashes.
 
 ### Flag Constants
 
@@ -74,6 +72,8 @@ Match objects always have a boolean value of `True`. To access their contents, u
 
 
 ## Pattern Syntax
+
+Usually for the pattern, a raw string notation (an `r` prefixes the string) is used to exempt python from escaping backslashes.
 
 ### Special Characters
 
