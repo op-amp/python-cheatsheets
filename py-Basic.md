@@ -18,9 +18,10 @@
 	2. Escape Characters
 	3. Length
 	4. String Operators
-	5. Methods
-	6. Special Prefixes
-	7. Unicode code point
+	5. String Interpolation
+	6. Methods
+	7. Special Prefixes
+	8. Unicode code point
 - [Boolean Type](#boolean-type)
 	1. Boolean Values
 	2. Comparison Operators
@@ -135,7 +136,8 @@ Despite consisting of two characters, it is commonly referred to as a singular e
 | `[]`      | Slicing 		|
 | `in`      | Membership 			|
 | `not in`  | Negated Membership 	|
-| `%`       | Formatting |
+
+### String Interpolation
 
 Use the `string % (variable1, variable2, ..., variableN)` syntax to format a string, i.e. to insert values in the tuple to the string.
 
