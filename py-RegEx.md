@@ -39,7 +39,7 @@ result = prog.search(string)
 
 Usually for the pattern, a raw string notation (an `r` prefixes the string) is used to exempt python from escaping backslashes.
 
-### Constants
+### Flag Constants
 
 Flag constants passed as the last argument for most of the manipulation functions:
 
@@ -78,17 +78,16 @@ Match objects always have a boolean value of `True`. To access their contents, u
 
 | Syntax      | Description |
 | ----------- | ----------- |
-| `.`         | Wildcard 		    |
 | `\n`        | Newline / Linefeed 	|
 | `\r`        | Carriage Return 	|
 | `\t`        | Horizontal Tab 		|
 | `\v`        | Vertical Tab 		|
 | `\f`        | Formfeed 		    |
 | `\0`        | Null 			    |
-| `\a`        | Bell 					                |
+| `\a`        | Bell 				|
 | `\b`        | Backspace character (only inside sets) 	|
-| `\c`        | Control character 			            |
-| `\\`        | Backslash 				                |
+| `\c`        | Control character 	|
+| `\\`        | Backslash 			|
 
 ### Character Classes
 
@@ -109,7 +108,7 @@ Inside sets,
 - Characters can be listed individually, or ranges can be indicated by giving two characters and separating them by a `-`;
 - If the first character of the set is `^`, it means the complement;
 - To match a literal `]`, place it as the first character or precede it with a backslash for an escape character;
-- Special characters lose special meanings and no need escape characters for them, but character classes are still accepted.
+- Others symbols lose special meanings and no need to be escaped, but special characters and character classes are still accepted.
 
 ### Group
 
@@ -118,6 +117,10 @@ Inside sets,
 ### Or
 
 `|` is used to create a regular expression that will match characters on either side.
+
+### Wildcard
+
+`.` is used to match a character that can be anything except a newline. To match a newline as well, use [flag constants](flag-constants).
 
 ### Quantifiers
 
