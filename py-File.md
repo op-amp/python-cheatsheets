@@ -92,6 +92,7 @@ Several object properties can be used to extract a certain part:
 1. `path.exists()` returns `True` if the path exists or `False` if not.
 2. `path.is_file()` returns `True` if the path exists and is a file, or `False` otherwise.
 3. `path.is_dir()` returns `True` if the path exists and is a directory, or `False` otherwise.
+4. `path.is_symlink()` returns `True` if the path points to a symbolic link, or `False` otherwise.
 
 **Absolute and relative paths**
 
@@ -183,6 +184,10 @@ content = path.read_bytes()
 
 `path.unlink(missing_ok=False)` removes this symbolic link.
 If the path does not exist, `FileNotFoundError` will be raised when missing_ok is `False`.
+
+**Read**
+
+`path.readlink()` returns a string representing the path to which the symbolic link points.
 
 
 ## Pathname Manipulation Functions
