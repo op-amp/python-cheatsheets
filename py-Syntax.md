@@ -24,8 +24,9 @@
 	2. Return Values
 	3. Variable Scope
 	4. Decorators
-- Anonymous Functions
+	5. Anonymous Functions
 - Modules
+- Command Line Arguments
 
 
 ## Variables
@@ -255,7 +256,7 @@ Or decorate an already defined function by
 Int = converter(default=0)(int)
 ```
 
-## Anonymous Functions
+### Anonymous Functions
 
 An anonymous function is a function that is defined without a name by `lambda` keyword in the form of `lambda arguments: expression`.
 
@@ -281,7 +282,10 @@ To use a module:
 
 ## Command Line Arguments
 
+When running a Python script from the command line, additional arguments can be specified.
+
 [`sys.argv`](https://docs.python.org/3/library/sys.html#sys.argv) is the list of command line arguments passed to a Python script.
+Usually `sys.argv[0]` is the script name passed to the interpreter.
 
 
 ## *Examples*
