@@ -279,6 +279,10 @@ To use a module:
 	2. Optional `as` following an imported function bounds the function a new name.
 	3. Multiple functions can be imported together with their names separated by `,`, and `*` represents all functions.
 
+## Command Line Arguments
+
+[`sys.argv`](https://docs.python.org/3/library/sys.html#sys.argv) is the list of command line arguments passed to a Python script.
+
 
 ## *Examples*
 
