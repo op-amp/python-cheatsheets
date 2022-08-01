@@ -64,6 +64,13 @@ Normally variable assignment in python are through copying the reference. Thus w
 
 To avoid this behavior, use `copy.copy()` in the `copy` module to make a duplicate copy of a mutable value, or `copy.deepcopy()` for inner mutable values as well.
 
+**Garbage collection**
+
+- The memory consumption of an object in bytes can be retrieved through [`sys.getsizeof(object)`](https://docs.python.org/3/library/sys.html#sys.getsizeof).
+- The reference count of the object can be retrieved through [`sys.getrefcount(object)`](https://docs.python.org/3/library/sys.html#sys.getrefcount).
+
+An object with with a reference count of 0 will get cleaned up by the Python garbage collector.
+
 
 ## Comments
 
@@ -162,6 +169,8 @@ Literals in the `case` statement can be combined by `|` to form a single pattern
 Errors detected during execution are called exceptions (in contrast with syntax errors).
 
 A **`raise` statement** allows the programmer to force a specified exception to occur.
+
+[`sys.exit(arg=0)`](https://docs.python.org/3/library/sys.html#sys.exit) specifically raises a `SystemExit` exception, signaling an intention to exit the interpreter.
 
 A **`try` statement** can be used to handle selected exceptions. It can have 4 types of clauses:
 
