@@ -179,8 +179,12 @@ By default, the content of the placehold aligns right, but a minus sign switch i
 **Separation**
 
 1. `string.split(separator=' ')` splits a string to a list of strings according to the separator string, with the separator omiited.
-2. `string.partition()` splits a string into three parts, the text before the separator string, the separator itself and the text after it.
-3. `separator.join([string1, string2, ..., stringN])` joins a list or tuple of strings to one string with the separator string added between each two.
+2. `separator.join([string1, string2, ..., stringN])` joins a list or tuple of strings to one string with the separator string added between each two.
+
+**Partition**
+
+1. `string.partition(separator)` searches from the left, and partitions the string into 3 parts: the text before it, the separator itself and the text after it.
+2. `string.rpartition(separator)` searches from the right, and partitions the string into 3 parts: the text before it, the separator itself and the text after it.
 
 **Search and Replacement**
 
