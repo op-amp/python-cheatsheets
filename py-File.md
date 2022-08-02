@@ -12,18 +12,20 @@
 	6. Directory Manipulations
 	7. File Manipulations
 	8. Link Manipulations
-- Auxilliary File I/O Modules
-	1. File System Interfaces
-	2. Common Pathname Manipulations
-	3. Environment Variables
 - File Objects
 	1. Initialization
 	2. Properties
 	3. Methods
+	4. JSON Convertion
 - Shelf Objects
 	1. Features
 	2. Initialization
 	3. Methods
+- File System Interfaces
+- Common Pathname Manipulations
+- Shell Utilities
+- Environment Variables
+
 
 
 ## Path Objects
@@ -33,7 +35,7 @@ The path presents the location of a file on the computer. There are two ways to 
 - An absolute path, which always begins with the root folder (`C:\` for Windows with a drive letter C, and `/` for POSIX);
 - A relative path, which is relative to the current working directory.
 
-**`pathlib` module** offers classes representing filesystem paths with semantics appropriate for different operating systems.
+The **`pathlib` module** offers classes representing filesystem paths with semantics appropriate for different operating systems.
 
 ### Instantiation
 
@@ -188,89 +190,6 @@ If the path does not exist, `FileNotFoundError` will be raised when missing_ok i
 `path.readlink()` returns a string representing the path to which the symbolic link points.
 
 
-## Auxilliary File I/O Modules
-
-### File System Interfaces
-
-The **`os` module** includes a group of functions and properties about the file system.
-
-**Working directory**
-
-1. `os.getcwd()` returns a string representing the current working directory.
-2. `os.listdir(path=os.curdir)` returns a list containing the names of the entries in the directory given by path.
-3. `os.chdir(path)` changes the current working directory to path.
-
-**File and directory information**
-
-1. `os.chmod(path, mode, *, follow_symlinks=True)` changes the mode of path to the numeric mode.
-2. `os.chown(path, uid, gid, *, follow_symlinks=True)` changes the owner and group of path to the numeric uid and gid (-1 leaves unchanged).
-3. `os.stat(path, *, follow_symlinks=True)` returns information about path with an [`os.stat_result`](https://docs.python.org/3/library/os.html#os.stat_result) object.
-
-**Miscellaneous system information**
-
-1. `os.curdir` is the constant string used by the operating system to refer to the current directory. This is `'.'` for Windows and POSIX.
-2. `os.pardir` is the constant string used by the operating system to refer to the parent directory. This is `'..'` for Windows and POSIX.
-3. `os.sep` is the character used by the operating system to separate pathname components. This is `'/'` for POSIX and `'\\'` for Windows.
-4. `os.pathsep` is the character used by the operating system to separate path components. Such as `':'` for POSIX or `';'` for Windows.
-5. `os.linesep` is the string used by the operating system to separate (i.e. terminate) lines. Such as `'\n'` for POSIX or `'\r\n'` for Windows.
-
-### Common Pathname Manipulations
-
-The **`os.path` module** implements a few useful functions on pathnames.
-
-**Combination**
-
-`os.path.join(path, *paths)` returns the concatenation of path and any members of paths with exactly one separator following each non-empty part except the last.
-
-**Components**
-
-1. `os.path.dirname(path)` returns a string of everything that comes before the last slash in path;
-2. `os.path.basename(path)` returns a string of everything that comes after the last slash in path.
-3. `os.path.split(path)` splits the path into everything leading up the last without trailing slashes, and the last pathname component;
-4. `os.path.splitdrive(path)` splits the path into the drive, and everything following up the drive;
-5. `os.path.splitext(path)` splits the path into everything leading up the extention, and the file extension.
-
-**Home path**
-
-`os.path.expanduser(path)` returns the argument with an initial component of `~` replaced by the absolute path of the home directory.
-
-**Absolute and relative paths**
-
-1. `os.path.isabs(path)` returns a normalized absolutized version of the pathname path.
-2. `os.path.abspath(path)` returns `True` if path is an absolute pathname.
-3. `os.path.relpath(path, start=os.curdir)` returns a relative filepath to path either from the start directory.
-
-**Path information**
-
-1. `os.path.getctime(path)` returns the time of the last metadata change or the creation time for path;
-2. `os.path.getmtime(path)` returns the time of last modification of path;
-3. `os.path.getatime(path)` returns the time of last access of path.
-4. `os.path.getsize(path)` returns the size, in bytes, of path, or raises `OSError` if the file does not exist or is inaccessible.
-
-### Environment Variables
-
-The **`os` module** offers properties and functions to interact with the system environment.
-
-**Integrated operational object**
-
-`os.environ` is a mapping object where keys and values are strings that represent the process environment.
-
-**Access**
-
-`os.getenv(key, default=None)` returns the value of the environment variable key if it exists, or default if not.
-This method uses `os.environ` and may not reflect environment changes in real time.
-
-**Insertion**
-
-`os.putenv(key, value)` sets the environment variable named key to the string value.
-Assignments to items in `os.environ` are automatically translated into calls to this method; however, calls to this method do not update `os.environ`.
-
-**Deletion**
-
-`os.unsetenv(key)` deletes the environment variable named key.
-Deletions of items in `os.environ` are automatically translated into calls to this method; however, calls to this method do not update `os.environ`.
-
-
 ## File Objects
 
 ### Initialization
@@ -345,10 +264,34 @@ file.close()
 
 `file.close()` closes an opened file.
 
+### JSON
+
+The **`json` module** provides supports to encode and decode JSON according to the convertion table:
+
+| JSON   | Python |
+|--------|--------|
+| object | dict
+| array  | list
+| string | str
+| number | int, float
+| true   | True
+| false  | Flase
+| null   | None
+
+**Serialization**
+
+- `json.dump(obj, file)` serializes obj as a JSON formatted stream to file (`.write()`-supporting).
+- `json.dumps(obj)` serializes obj to a JSON formatted string as return.
+
+**Deserialization**
+
+- `json.load(file)` deserializes file (`.read()`-supporting) to a Python object as return, or raises `JSONDecodeError` if JSON document invalid.
+- `json.loads(string)` deserializes string to a Python object as return, or raises `JSONDecodeError` if JSON document invalid.
+
 
 ## Shelf Objects
 
-**`shelve` module** offers a way to save variables in your Python programs to binary shelf files.
+The **`shelve` module** offers a way to save variables in your Python programs to binary shelf files.
 
 ``` python
 import shelve
@@ -371,6 +314,110 @@ A shelf object is a persistent, dictionary-like object, with ordinary strings as
 - `shelf.close()` synchronizes and closes the persistent dict object.
 
 Multiple files with the same name and different extensions might be created.
+
+
+## File System Interfaces
+
+The **`os` module** includes a group of functions and properties about the file system.
+
+**Working directory**
+
+1. `os.getcwd()` returns a string representing the current working directory.
+2. `os.listdir(path=os.curdir)` returns a list containing the names of the entries in the directory given by path.
+3. `os.chdir(path)` changes the current working directory to path.
+
+**File and directory information**
+
+1. `os.chmod(path, mode, *, follow_symlinks=True)` changes the mode of path to the numeric mode.
+2. `os.chown(path, uid, gid, *, follow_symlinks=True)` changes the owner and group of path to the numeric uid and gid (-1 leaves unchanged).
+3. `os.stat(path, *, follow_symlinks=True)` returns information about path with an [`os.stat_result`](https://docs.python.org/3/library/os.html#os.stat_result) object.
+
+**Miscellaneous system information**
+
+1. `os.curdir` is the constant string used by the operating system to refer to the current directory. This is `'.'` for Windows and POSIX.
+2. `os.pardir` is the constant string used by the operating system to refer to the parent directory. This is `'..'` for Windows and POSIX.
+3. `os.sep` is the character used by the operating system to separate pathname components. This is `'/'` for POSIX and `'\\'` for Windows.
+4. `os.pathsep` is the character used by the operating system to separate path components. Such as `':'` for POSIX or `';'` for Windows.
+5. `os.linesep` is the string used by the operating system to separate (i.e. terminate) lines. Such as `'\n'` for POSIX or `'\r\n'` for Windows.
+
+
+## Common Pathname Manipulations
+
+The **`os.path` module** implements a few useful functions on pathnames.
+
+**Combination**
+
+`os.path.join(path, *paths)` returns the concatenation of path and any members of paths with exactly one separator following each non-empty part except the last.
+
+**Components**
+
+1. `os.path.dirname(path)` returns a string of everything that comes before the last slash in path;
+2. `os.path.basename(path)` returns a string of everything that comes after the last slash in path.
+3. `os.path.split(path)` splits the path into everything leading up the last without trailing slashes, and the last pathname component;
+4. `os.path.splitdrive(path)` splits the path into the drive, and everything following up the drive;
+5. `os.path.splitext(path)` splits the path into everything leading up the extention, and the file extension.
+
+**Home path**
+
+`os.path.expanduser(path)` returns the argument with an initial component of `~` replaced by the absolute path of the home directory.
+
+**Absolute and relative paths**
+
+1. `os.path.isabs(path)` returns a normalized absolutized version of the pathname path.
+2. `os.path.abspath(path)` returns `True` if path is an absolute pathname.
+3. `os.path.relpath(path, start=os.curdir)` returns a relative filepath to path either from the start directory.
+
+**Path information**
+
+1. `os.path.getctime(path)` returns the time of the last metadata change or the creation time for path;
+2. `os.path.getmtime(path)` returns the time of last modification of path;
+3. `os.path.getatime(path)` returns the time of last access of path.
+4. `os.path.getsize(path)` returns the size, in bytes, of path, or raises `OSError` if the file does not exist or is inaccessible.
+
+
+## Shell Utilities
+
+The **`shutil` module** offers a number of high-level operations on files and collections of files.
+
+**Copy**
+
+- `shutil.copy(src, dst, *, follow_symlinks=True)` copies the file src to the file or directory dst and returns the path to the newly created file.
+If dst is a directory, the file will be copied into dst using the filename from src. If dst is a file that already exists, it will be replaced.
+- `shutil.copytree(src, dst, symlinks=False)` recursively copies an entire directory tree rooted at src to a directory named dst and returns the destination.
+All intermediate directories needed to contain dst will also be created by default.
+
+**Move**
+
+`shutil.move(src, dst)` recursively move a file or directory src to another location dst and returns the destination.
+If the destination is an existing directory, then src will be moved inside. If the destination already exists but is not a directory, it may be overwritten.
+
+**Remove**
+
+`shutil.rmtree(path)` deletes an entire directory tree; path must point to a directory (but not a symbolic link to a directory).
+
+
+## Environment Variables
+
+The **`os` module** offers properties and functions to interact with the system environment.
+
+**Integrated operational object**
+
+`os.environ` is a mapping object where keys and values are strings that represent the process environment.
+
+**Access**
+
+`os.getenv(key, default=None)` returns the value of the environment variable key if it exists, or default if not.
+This method uses `os.environ` and may not reflect environment changes in real time.
+
+**Insertion**
+
+`os.putenv(key, value)` sets the environment variable named key to the string value.
+Assignments to items in `os.environ` are automatically translated into calls to this method; however, calls to this method do not update `os.environ`.
+
+**Deletion**
+
+`os.unsetenv(key)` deletes the environment variable named key.
+Deletions of items in `os.environ` are automatically translated into calls to this method; however, calls to this method do not update `os.environ`.
 
 
 ## *References*
