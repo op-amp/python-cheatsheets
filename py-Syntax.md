@@ -214,13 +214,14 @@ It consists of the following:
 
 - The `def` keyword
 - The function name
-- Parameters of the function in a pair of round brackets
+- Parameters of the function in a pair of round brackets, with positional parameters in front of keyword parameters
 - A colon
 - An indented block of code (the function body)
 
-Values passed to a function during the function call is called arguments. In a function call, arguments can be identified by position or keyword.
+Values passed to a function during the function call are called arguments, identified by either position or keyword. Parameters are variables that contain arguments.
 
-Parameters are variables that contain arguments.
+Arguments can be variable in length by adding `*` for positional arguments and `**` for keyword arguments.
+Arguments in place of `*args` will be combined to a tuple-like object and `**kwargs` to a dict-like object.
 
 ### Return Values
 
@@ -298,6 +299,7 @@ To use a module:
 	1. The function can then be called with no namespace.
 	2. Optional `as` following an imported function bounds the function a new name.
 	3. Multiple functions can be imported together with their names separated by `,`, and `*` represents all functions.
+
 
 ## Logging
 
