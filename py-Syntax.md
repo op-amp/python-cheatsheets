@@ -30,7 +30,7 @@
 	4. Decorators
 	5. Anonymous Functions
 - Modules
-- Command Line Arguments
+- Logging
 
 
 ## Variables
@@ -298,13 +298,6 @@ To use a module:
 	1. The function can then be called with no namespace.
 	2. Optional `as` following an imported function bounds the function a new name.
 	3. Multiple functions can be imported together with their names separated by `,`, and `*` represents all functions.
-
-## Command Line Arguments
-
-When running a Python script from the command line, additional arguments can be specified.
-
-[`sys.argv`](https://docs.python.org/3/library/sys.html#sys.argv) is the list of command line arguments passed to a Python script.
-Usually `sys.argv[0]` is the script name passed to the interpreter.
 
 ## Logging
 
