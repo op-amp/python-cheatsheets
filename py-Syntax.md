@@ -18,7 +18,11 @@
 	2. Loop
 	3. Pass
 - Pattern Matching
-- Exception Handling
+- Exceptions
+	1. Exception Raising
+	2. Exception Handling
+	3. Manual Program Termination
+	4. Assertions
 - Functions
 	1. Parameters
 	2. Return Values
@@ -165,13 +169,15 @@ It consists of the following:
 Literals in the `case` statement can be combined by `|` to form a single pattern; `_` or any identifier acts as a wildcard that always matches.
 
 
-## Exception Handling
+## Exceptions
 
 Errors detected during execution are called exceptions (in contrast with syntax errors).
 
+### Exception Raising
+
 A **`raise` statement** allows the programmer to force a specified exception to occur.
 
-[`sys.exit(arg=0)`](https://docs.python.org/3/library/sys.html#sys.exit) specifically raises a `SystemExit` exception, signaling an intention to exit the interpreter.
+### Exception Handling
 
 A **`try` statement** can be used to handle selected exceptions. It can have 4 types of clauses:
 
@@ -182,6 +188,19 @@ A **`try` statement** can be used to handle selected exceptions. It can have 4 t
 
 If an exception occurs which does not match any exception named in the `except` clauses, it is passed on to outer `try` statements.
 A raise statement inside an `except` clause re-raise the handled exception.
+
+### Manual Program Termination
+
+[`sys.exit(arg=0)`](https://docs.python.org/3/library/sys.html#sys.exit) specifically raises a `SystemExit` exception, signaling an intention to exit the interpreter.
+
+### Assertions
+
+An assertion is a sanity check performed by **`assert` statements**. If the check fails, an `AssertionError` is raised. It consists of the following:
+
+- The `assert` keyword
+- A conditional expression
+- A comma
+- A string to display when the condition is False and the exception raised
 
 
 ## Functions
@@ -286,6 +305,34 @@ When running a Python script from the command line, additional arguments can be 
 
 [`sys.argv`](https://docs.python.org/3/library/sys.html#sys.argv) is the list of command line arguments passed to a Python script.
 Usually `sys.argv[0]` is the script name passed to the interpreter.
+
+## Logging
+
+The **`logging` module** makes it easy to create a record of custom messages.
+
+``` python
+import logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
+logging.debug('Test of debug msg')
+logging.info('Test of info msg')
+logging.warning('Test of warning msg')
+logging.error('Test of error msg')
+logging.critical('Test of critical msg')
+
+logging.disable(logging.CRITICAL)
+```
+
+- `logging.basicConfig(*, level, format, filename=None, filemode='a')` does basic configuration for the logging system.
+- `logging.disable(level=CRITICAL)` suppress all log messages at that level or lower.
+
+| Level | Numeric value | Description |
+|-------|---------------|-------------|
+| logging.CRITICAL | 50 | The lowest level. Used for small details.
+| logging.ERROR    | 40 | Used to record information on general events or confirm that things are working at their point.
+| logging.WARNING  | 30 | Used to indicate a potential problem that might prevent the program from working in the future.
+| logging.INFO     | 20 | Used to record an error that causes the program to fail to do something.
+| logging.DEBUG    | 10 | The highest level. Used to indicate a fatal error that causes the program to stop running entirely.
 
 
 ## *Examples*
