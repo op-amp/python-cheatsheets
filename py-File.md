@@ -17,6 +17,7 @@
 	2. Properties
 	3. Methods
 	4. JSON Convertion
+	5. CSV I/O
 - Shelf Objects
 	1. Features
 	2. Initialization
@@ -281,13 +282,41 @@ The **`json` module** provides supports to encode and decode JSON according to t
 
 **Serialization**
 
-- `json.dump(obj, file)` serializes _obj_ as a JSON formatted stream to file (`.write()`-supporting).
+- `json.dump(obj, file)` serializes _obj_ as a JSON formatted stream to file (`.write()`-supporting file object).
 - `json.dumps(obj)` serializes _obj_ to a JSON formatted string as return.
 
 **Deserialization**
 
 - `json.load(file)` deserializes _file_ (`.read()`-supporting) to a Python object as return, or raises `JSONDecodeError` if JSON document invalid.
 - `json.loads(string)` deserializes _string_ to a Python object as return, or raises `JSONDecodeError` if JSON document invalid.
+
+### CSV
+
+The **`csv` module** can be used to read and write CSV files.
+
+``` python
+import csv
+csvfile = open('user.csv', 'w', newline='')
+DictWriter = csv.DictWriter(, ['ID', 'Name', 'Gender', 'Privilege'])
+DictWriter.writeheader()
+DictWriter.writerow({'Name': 'Seth', 'Gender': 'M', 'ID': '1', 'Privilege': 'High'})
+csvfile.close()
+```
+
+**Read**
+
+- `csv.reader(file, *, delimiter=',', lineterminator='\n')` returns a **`reader` object** that maps each row in a file object _file_ to a list.
+- `csv.DictReader(file, fieldnames=None, *, delimiter=',', lineterminator='\n')` returns an object that maps each row to a dict.
+The keys are given by _fieldnames_ or the values in the first row of _file_.
+
+**Write**
+
+- `csv.writer(file, *, delimiter=',', lineterminator='\n')` returns a **`writer` object** that converts data into delimited strings on the given file object _file_.
+	- `writer.writerow(values)` takes a list argument and returns the number of characters written for that row including the newline.
+- `csv.DictWriter(file, fieldnames=None, *, delimiter=',', lineterminator='\n')` returns an object that maps dictionaries to output rows.
+The keys are given by _fieldnames_ which is a sequence that identify the order in which values in dictionaries are written to _file_.
+	- `DictWriter.writeheader()` writes a row with the field names as specified in the constructor.
+	- `DictWriter.writerow(pairs)` takes a dict argument and returns the number of characters written for that row including the newline.
 
 
 ## Shelf Objects
@@ -323,7 +352,8 @@ The **`zipfile` module** provides supports for file compression.
 
 **Open**
 
-`zipfile.ZipFile(file, mode='r', compression=zipfile.ZIP_STORED)` opens a ZIP file and returns a ZipFile object used to read and write the ZIP.
+`zipfile.ZipFile(file, mode='r', compression=zipfile.ZIP_STORED)` opens a ZIP file and returns a ZipFile object used to read and write the ZIP;
+_file_ can be a string representing a path, a path object or a file object.
 
 **Read**
 
@@ -335,12 +365,12 @@ The **`zipfile` module** provides supports for file compression.
 
 1. `archive.open(name, mode='r', pwd=None)` accesses a member specified by _name_ as a binary file object.
 2. `archive.extract(member, path=None, pwd=None)` extracts a member to the current working directory or _path_; _member_ must be its full name or a ZipInfo object.
-3. `archive.extractall(path=None, members=None, pwd=None)` extracts all members to the current working directory or _path_.
+3. `archive.extractall(path=None, members=None, pwd=None)` extracts all members to the current working directory or _path_; _members_ must be a list of archive names.
 
 **Write**
 
 1. `archive.write(filename, arcname=None, compress_type=None)` writes the file named _filename_ to _archive_, with an archive name _arcname_.
-2. `archive.writestr(arcname, data, compress_type=None)` writes a file into _archive_, whose contents is _data_, which may be either a str or a bytes instance.
+2. `archive.writestr(arcname, data, compress_type=None)` writes a file into _archive_, whose contents is a string or a bytes instance _data_.
 
 **Close**
 
