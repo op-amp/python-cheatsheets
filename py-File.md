@@ -21,6 +21,7 @@
 	1. Features
 	2. Initialization
 	3. Methods
+- Archive Files
 - File System Interfaces
 - Common Pathname Manipulations
 - Shell Utilities
@@ -50,7 +51,7 @@ rel = Path('Documents', 'Dev', 'Python', 'main.py')
 
 The slash operator `/` can combine Path objects and strings and helps create child paths.
 
-It is equvalent to the `path.joinpath(*other)` method which combines the path with each of the other arguments in turn.
+It is equvalent to the `path.joinpath(*other)` method which combines the path with each of the _other_ arguments in turn.
 
 ``` python
 rel = Path('Documents') / 'Dev' / 'Python' / 'main.py'
@@ -104,8 +105,8 @@ Several object properties can be used to extract a certain part:
 **Absolute and relative paths**
 
 1. `path.is_absolute()` returns whether the path is absolute or not.
-2. `path.is_relative_to(*start)` returns whether or not this path is relative to the start path.
-3. `path.relative_to(*start)` computes a version of this path relative to the start path, or raises `ValueError` if not possible.
+2. `path.is_relative_to(*start)` returns whether or not this path is relative to the _start_ path.
+3. `path.relative_to(*start)` computes a version of this path relative to the _start_ path, or raises `ValueError` if not possible.
 4. `path.resolve(strict=False)` makes the path absolute, resolving any symlinks, and returns the resulting path object.
 
 **Ownership**
@@ -117,9 +118,9 @@ Several object properties can be used to extract a certain part:
 
 **Create**
 
-`path.mkdir(mode=0o777, parents=False, exist_ok=False)` creates a new directory at this path, with the mode if given.
-If parents is `True`, any missing parents of this path are created as needed, with the default permissions; otherwise, a missing parent raises `FileNotFoundError`.
-If the path already exists, `FileExistsError` will be raised when exist_ok is `False`.
+`path.mkdir(mode=0o777, parents=False, exist_ok=False)` creates a new directory at this path, with _mode_ if given.
+If _parents_ is `True`, any missing parents of this path are created as needed, with the default permissions; otherwise, a missing parent raises `FileNotFoundError`.
+If the path already exists, `FileExistsError` will be raised when _exist_ok_ is `False`.
 
 **Remove**
 
@@ -127,30 +128,30 @@ If the path already exists, `FileExistsError` will be raised when exist_ok is `F
 
 **Rename**
 
-`path.rename(target)` renames this directory to the given target, and return a new Path instance pointing to target.
+`path.rename(target)` renames this directory to the given _target_, and return a new Path instance pointing to _target_.
 
 **List contents**
 
 `path.iterdir()` yields path objects of the directory contents.
 
-`path.glob(pattern)` globs the given relative pattern string in the directory, yielding all matching files.
+`path.glob(pattern)` globs the given relative _pattern_ string in the directory, yielding all matching files.
 A `**` in the pattern literal means this directory and all subdirectories, recursively.
 
 ### File Manipulations
 
 **Create**
 
-`path.touch(mode=0o666, exist_ok=True)` creates a file at this path, with the mode if given.
-If the path already exists, `FileExistsError` will be raised when exist_ok is `False`.
+`path.touch(mode=0o666, exist_ok=True)` creates a file at this path, with _mode_ if given.
+If the path already exists, `FileExistsError` will be raised when _exist_ok_ is `False`.
 
 **Remove**
 
 `path.unlink(missing_ok=False)` removes this file.
-If the path does not exist, `FileNotFoundError` will be raised when missing_ok is `False`.
+If the path does not exist, `FileNotFoundError` will be raised when _missing_ok_ is `False`.
 
 **Rename**
 
-`path.rename(target)` renames this file to the given target, and return a new Path instance pointing to target.
+`path.rename(target)` renames this file to the given _target_, and return a new Path instance pointing to _target_.
 
 **Open**
 
@@ -177,13 +178,13 @@ content = path.read_bytes()
 
 **Create**
 
-1. `path.symlink_to(target, target_is_directory=False)` makes this path a symbolic link to target.
-2. `path.hardlink_to(target)` makes this path a hard link to the same file as target.
+1. `path.symlink_to(target, target_is_directory=False)` makes this path a symbolic link to _target_.
+2. `path.hardlink_to(target)` makes this path a hard link to the same file as _target_.
 
 **Remove**
 
 `path.unlink(missing_ok=False)` removes this symbolic link.
-If the path does not exist, `FileNotFoundError` will be raised when missing_ok is `False`.
+If the path does not exist, `FileNotFoundError` will be raised when _missing_ok_ is `False`.
 
 **Read**
 
@@ -237,7 +238,7 @@ file.close()
 
 - `file.writable()` returns whether the file can be written to or not.
 - `file.write(string)` writes the contents of string to the file, returning the number of characters written.
-- `file.writelines(list[string])` writes a list of strings to the file.
+- `file.writelines(strings)` writes a list of strings to the file.
 
 ``` python
 import pprint
@@ -252,7 +253,7 @@ file.close()
 
 - `file.tell()` returns an integer giving the current position of the file object in the file.
 - `file.seekable()` returns whether the file allows us to change the file position.
-- `file.seek(offset, whence=0)` changes file object position in the file. The position is computed from adding offset to a reference point.
+- `file.seek(offset, whence=0)` changes file object position in the file. The position is computed from adding _offset_ to a reference point.
 
 | Whence Value | Reference Point |
 |--------------|-----------------|
@@ -280,13 +281,13 @@ The **`json` module** provides supports to encode and decode JSON according to t
 
 **Serialization**
 
-- `json.dump(obj, file)` serializes obj as a JSON formatted stream to file (`.write()`-supporting).
-- `json.dumps(obj)` serializes obj to a JSON formatted string as return.
+- `json.dump(obj, file)` serializes _obj_ as a JSON formatted stream to file (`.write()`-supporting).
+- `json.dumps(obj)` serializes _obj_ to a JSON formatted string as return.
 
 **Deserialization**
 
-- `json.load(file)` deserializes file (`.read()`-supporting) to a Python object as return, or raises `JSONDecodeError` if JSON document invalid.
-- `json.loads(string)` deserializes string to a Python object as return, or raises `JSONDecodeError` if JSON document invalid.
+- `json.load(file)` deserializes _file_ (`.read()`-supporting) to a Python object as return, or raises `JSONDecodeError` if JSON document invalid.
+- `json.loads(string)` deserializes _string_ to a Python object as return, or raises `JSONDecodeError` if JSON document invalid.
 
 
 ## Shelf Objects
@@ -316,6 +317,36 @@ A shelf object is a persistent, dictionary-like object, with ordinary strings as
 Multiple files with the same name and different extensions might be created.
 
 
+## Archive Files
+
+The **`zipfile` module** provides supports for file compression.
+
+**Open**
+
+`zipfile.ZipFile(file, mode='r', compression=zipfile.ZIP_STORED)` opens a ZIP file and returns a ZipFile object used to read and write the ZIP.
+
+**Read**
+
+1. `archive.namelist()` returns a list of archive members by name.
+2. `archive.infolist()` returns a list containing a [`ZipInfo`](https://docs.python.org/3/library/zipfile.html#zipfile.ZipInfo) object for each archive member.
+3. `archive.getinfo(name)` returns a `ZipInfo` object with information about the archive member _name_.
+
+**Extract**
+
+1. `archive.open(name, mode='r', pwd=None)` accesses a member specified by _name_ as a binary file object.
+2. `archive.extract(member, path=None, pwd=None)` extracts a member to the current working directory or _path_; _member_ must be its full name or a ZipInfo object.
+3. `archive.extractall(path=None, members=None, pwd=None)` extracts all members to the current working directory or _path_.
+
+**Write**
+
+1. `archive.write(filename, arcname=None, compress_type=None)` writes the file named _filename_ to _archive_, with an archive name _arcname_.
+2. `archive.writestr(arcname, data, compress_type=None)` writes a file into _archive_, whose contents is _data_, which may be either a str or a bytes instance.
+
+**Close**
+
+`archive.close()` closes the archive file.
+
+
 ## File System Interfaces
 
 The **`os` module** includes a group of functions and properties about the file system.
@@ -323,14 +354,14 @@ The **`os` module** includes a group of functions and properties about the file 
 **Working directory**
 
 1. `os.getcwd()` returns a string representing the current working directory.
-2. `os.listdir(path=os.curdir)` returns a list containing the names of the entries in the directory given by path.
-3. `os.chdir(path)` changes the current working directory to path.
+2. `os.listdir(path=os.curdir)` returns a list containing the names of the entries in the directory given by _path_.
+3. `os.chdir(path)` changes the current working directory to _path_.
 
 **File and directory information**
 
-1. `os.chmod(path, mode, *, follow_symlinks=True)` changes the mode of path to the numeric mode.
-2. `os.chown(path, uid, gid, *, follow_symlinks=True)` changes the owner and group of path to the numeric uid and gid (-1 leaves unchanged).
-3. `os.stat(path, *, follow_symlinks=True)` returns information about path with an [`os.stat_result`](https://docs.python.org/3/library/os.html#os.stat_result) object.
+1. `os.chmod(path, mode, *, follow_symlinks=True)` changes the mode of _path_ to the numeric _mode_.
+2. `os.chown(path, uid, gid, *, follow_symlinks=True)` changes the owner and group of _path_ to the numeric _uid_ and _gid_ (-1 leaves unchanged).
+3. `os.stat(path, *, follow_symlinks=True)` returns information about _path_ as an [`os.stat_result`](https://docs.python.org/3/library/os.html#os.stat_result) object.
 
 **Miscellaneous system information**
 
@@ -347,15 +378,15 @@ The **`os.path` module** implements a few useful functions on pathnames.
 
 **Combination**
 
-`os.path.join(path, *paths)` returns the concatenation of path and any members of paths with exactly one separator following each non-empty part except the last.
+`os.path.join(path, *paths)` returns the concatenation of _path_ and any members of _paths_ with exactly one separator following each non-empty part except the last.
 
 **Components**
 
-1. `os.path.dirname(path)` returns a string of everything that comes before the last slash in path;
-2. `os.path.basename(path)` returns a string of everything that comes after the last slash in path.
-3. `os.path.split(path)` splits the path into everything leading up the last without trailing slashes, and the last pathname component;
-4. `os.path.splitdrive(path)` splits the path into the drive, and everything following up the drive;
-5. `os.path.splitext(path)` splits the path into everything leading up the extention, and the file extension.
+1. `os.path.dirname(path)` returns a string of everything that comes before the last slash in _path_;
+2. `os.path.basename(path)` returns a string of everything that comes after the last slash in _path_.
+3. `os.path.split(path)` splits _path_ into everything leading up the last without trailing slashes, and the last pathname component;
+4. `os.path.splitdrive(path)` splits _path_ into the drive, and everything following up the drive;
+5. `os.path.splitext(path)` splits _path_ into everything leading up the extention, and the file extension.
 
 **Home path**
 
@@ -363,16 +394,16 @@ The **`os.path` module** implements a few useful functions on pathnames.
 
 **Absolute and relative paths**
 
-1. `os.path.isabs(path)` returns a normalized absolutized version of the pathname path.
-2. `os.path.abspath(path)` returns `True` if path is an absolute pathname.
-3. `os.path.relpath(path, start=os.curdir)` returns a relative filepath to path either from the start directory.
+1. `os.path.isabs(path)` returns a normalized absolutized version of the pathname _path_.
+2. `os.path.abspath(path)` returns `True` if _path_ is an absolute pathname.
+3. `os.path.relpath(path, start=os.curdir)` returns a relative filepath to _path_ from the start directory.
 
 **Path information**
 
-1. `os.path.getctime(path)` returns the time of the last metadata change or the creation time for path;
-2. `os.path.getmtime(path)` returns the time of last modification of path;
-3. `os.path.getatime(path)` returns the time of last access of path.
-4. `os.path.getsize(path)` returns the size, in bytes, of path, or raises `OSError` if the file does not exist or is inaccessible.
+1. `os.path.getctime(path)` returns the time of the last metadata change or the creation time for _path_;
+2. `os.path.getmtime(path)` returns the time of last modification of _path_;
+3. `os.path.getatime(path)` returns the time of last access of _path_.
+4. `os.path.getsize(path)` returns the size, in bytes, of _path_, or raises `OSError` if the file does not exist or is inaccessible.
 
 
 ## Shell Utilities
@@ -381,19 +412,19 @@ The **`shutil` module** offers a number of high-level operations on files and co
 
 **Copy**
 
-- `shutil.copy(src, dst, *, follow_symlinks=True)` copies the file src to the file or directory dst and returns the path to the newly created file.
-If dst is a directory, the file will be copied into dst using the filename from src. If dst is a file that already exists, it will be replaced.
-- `shutil.copytree(src, dst, symlinks=False)` recursively copies an entire directory tree rooted at src to a directory named dst and returns the destination.
-All intermediate directories needed to contain dst will also be created by default.
+- `shutil.copy(src, dst, *, follow_symlinks=True)` copies the file _src_ to the file or directory _dst_ and returns the path to the newly created file.
+If _dst_ is a directory, the file will be copied into dst using the filename from _src_. If _dst_ is a file that already exists, it will be replaced.
+- `shutil.copytree(src, dst, symlinks=False)` recursively copies an entire directory tree rooted at _src_ to a directory named _dst_ and returns the destination.
+All intermediate directories needed to contain _dst_ will also be created by default.
 
 **Move**
 
-`shutil.move(src, dst)` recursively move a file or directory src to another location dst and returns the destination.
-If the destination is an existing directory, then src will be moved inside. If the destination already exists but is not a directory, it may be overwritten.
+`shutil.move(src, dst)` recursively move a file or directory _src_ to another location _dst_ and returns the destination.
+If the destination is an existing directory, then _src_ will be moved inside. If the destination already exists but is not a directory, it may be overwritten.
 
 **Remove**
 
-`shutil.rmtree(path)` deletes an entire directory tree; path must point to a directory (but not a symbolic link to a directory).
+`shutil.rmtree(path)` deletes an entire directory tree; _path_ must point to a directory (but not a symbolic link to a directory).
 
 
 ## Environment Variables
@@ -406,17 +437,17 @@ The **`os` module** offers properties and functions to interact with the system 
 
 **Access**
 
-`os.getenv(key, default=None)` returns the value of the environment variable key if it exists, or default if not.
+`os.getenv(key, default=None)` returns the value of the environment variable _key_ if it exists, or _default_ if not.
 This method uses `os.environ` and may not reflect environment changes in real time.
 
 **Insertion**
 
-`os.putenv(key, value)` sets the environment variable named key to the string value.
+`os.putenv(key, value)` sets the environment variable named _key_ to the string _value_.
 Assignments to items in `os.environ` are automatically translated into calls to this method; however, calls to this method do not update `os.environ`.
 
 **Deletion**
 
-`os.unsetenv(key)` deletes the environment variable named key.
+`os.unsetenv(key)` deletes the environment variable named _key_.
 Deletions of items in `os.environ` are automatically translated into calls to this method; however, calls to this method do not update `os.environ`.
 
 
