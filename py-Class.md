@@ -33,10 +33,32 @@ Built-in types can be used as base classes for extension by the user.
 Multiple inheritance is supported in Python.
 `super()` returns a proxy object that allows the access to the methods of all base classes.
 
-### Self Reference
+### Reference Argument
 
-The first argument of a function in class must be the object itself, oftenly called `self`.
-It refers to the current instance of the class, and is used to access attributes that belongs to the class.
+Functions defined in class are called methods.
+
+The first parameter of a method must be the object itself, oftenly called self reference with an identifier name `self`.
+It refers to the current instance of the class, and is used to access attributes that belongs to the class or the instance.
+
+### Method Decorators
+
+**Property**
+
+A property is like a variable that can be retrieved, set, or deleted.
+
+- `@property` declares a method as a property. The method will be the getter method that returns the value of the property.
+- `@p.setter` declares a method as the setter method for the property _p_.
+- `@p.deleter` declares a method as the deleter method for the property _p_.
+
+**Class method**
+
+`@classmethod` declares a method as a class method that can be called through the class name without instantiation.
+
+Instead of `self`, the reference argument of a class method is `cls`, which is used to access the class attributes but not the instance attributes.
+
+**Static method**
+
+`@staticmethod` defines a static method that does not receive any reference argument and cannot access any attributes.
 
 
 ## Instantiation
