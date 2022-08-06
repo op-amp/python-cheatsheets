@@ -112,6 +112,28 @@ The format codes as below:
 | `%%`      | Literal `%` character
 
 
+## Multithreading
+
+Python programs by default have a single thread of execution, and will not terminate until all its threads have terminated.
+
+The **`threading` module** offers ways to create and manage separate threads through the `Thread` objects.
+
+**Instantiation**
+
+`threading.Thread(target=None, name=None, args=(), kwargs={})` returns a `Thread` object.
+_target_ is a callable as the target to be run.
+_name_ is the given thread name to override the by default constructed unique thread name.
+_args_ and _kwargs_ are to be passed to the target.
+
+**Start**
+
+`thread.start()` creates a new thread and starts executing the target function in the new thread according to the `Thread` object.
+
+**Join**
+
+`thread.join(timeout=None)` blocks the calling thread, and waits until the thread whose `join()` method is called terminates or the optional timeout occurs.
+
+
 ## *Examples*
 
 **Stopwatch**
