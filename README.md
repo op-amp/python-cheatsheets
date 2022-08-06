@@ -6,5 +6,6 @@
 - [Structured Data Types](/py-Data.md)
 - [Regular Expressions](/py-RegEx.md)
 - [File Operations](/py-File.md)
+- [Task Management](/py-Task.md)
 
 Please note that some of the language feature mentioned in the cheatsheets requires Python version 3.10 to work.
