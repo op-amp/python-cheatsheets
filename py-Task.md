@@ -3,7 +3,6 @@
 
 ###### _Table of Contents_
 
-- Command Line Arguments
 - Time
 	1. Timestamp
 	2. Datetime
@@ -18,14 +17,10 @@
 	6. Semaphores
 	7. Context Managers
 - Launching Programs
-
-
-## Command Line Arguments
-
-When running a Python script from the command line, additional arguments can be specified.
-
-[`sys.argv`](https://docs.python.org/3/library/sys.html#sys.argv) is the list of command line arguments passed to a Python script.
-Usually `sys.argv[0]` is the script name passed to the interpreter.
+	1. Initialization
+	2. Passing Command Line Arguments
+	3. Using Default Applications
+	4. Process Monitor
 
 
 ## Time
@@ -42,7 +37,6 @@ The **`time` module** offers time-related functions.
 **Pause program execution**
 
 `time.sleep(seconds)` suspends execution of the calling thread for the given number of seconds.
-
 
 ### Datetime
 
@@ -149,7 +143,7 @@ The **`threading` module** offers ways to create and manage separate threads thr
 
 **Instantiate**
 
-`threading.Timer(interval, target, args=(), kwargs={})` returns a `Timer` that will run _target_ with _args_ and _kwargs_, after _interval_ seconds.
+`threading.Timer(interval, function, args=(), kwargs={})` returns a `Timer` that will run _function_ with _args_ and _kwargs_, after _interval_ seconds.
 
 **Cancel**
 
@@ -256,6 +250,38 @@ Objects provided by the `threading` module with `acquire()` and `release()` meth
 - When exiting the `with` block, the `release()` method will be called.
 
 
+## Launching Programs
+
+A Python program can start other programs with the `Popen()` function in the built-in **`subprocess` module**.
+
+### Initialization
+
+`subprocess.Popen(program)` executes the program in a new process and returns an object for process monitoring.
+
+### Passing Command Line Arguments
+
+If a list of strings is passed as the sole argument to `Popen()`:
+
+- The first string in the list will be the executable filename;
+- All the subsequent strings will be the command line arguments to pass to the program.
+
+[`sys.argv`](https://docs.python.org/3/library/sys.html#sys.argv) is the list of command line arguments passed to a Python script.
+Usually `sys.argv[0]` is the script name passed to the interpreter.
+
+### Using Default Applications
+
+Each operating system has a program that performs the equivalent of double-clicking a document file to open it:
+
+- `subprocess.Popen(['start', filename], shell=True)` for Windows;
+- `subprocess.Popen(['open', filename])` for macOS;
+- `subprocess.Popen(['see', filename])` for Ubuntu.
+
+### Process Monitor
+
+1. `proc.poll()` returns None if the process is still running, and returns the integer exit code of the process if the program has terminated.
+2. `proc.wait()` blocks until the launched process has terminated and then returns the integer exit code of the process.
+
+
 ## *Examples*
 
 **Stopwatch**
@@ -282,7 +308,7 @@ except KeyboardInterrupt:
     print('\n\Terminated.')
 ```
 
-**Task Scheduler**
+**Task scheduler**
 
 ```python
 import time, datetime, threading
@@ -311,6 +337,32 @@ def hello(msg):
     print(msg)
 
 hello('Greetings from the Earth!').start()
+```
+
+**Multithreaded continuous increment**
+
+```python
+import threading, time, random
+
+lock = threading.Lock()
+threads = []
+counter = 0
+
+def inc():
+    with lock:
+        global counter; value = counter
+        time.sleep(random.randint(0, 1))
+        counter = value + 1
+
+for i in range(10):
+    thread = threading.Thread(target=inc)
+    thread.start()
+    threads.append(thread)
+
+for thread in threads:
+    thread.join()
+else:
+    print(counter)
 ```
 
 
