@@ -250,17 +250,21 @@ A function decorator is a special function that wraps another function. It takes
 If a decorator requires other arguments, define an outer function that handles the arguments to the decorator and returns the decorator.
 
 ```python
+import functools
 def converter(default=None):
     def decorator(func):
-        def conv_no_error(value):
+        @functools.wraps(func)
+        def wrapper(value):
             try:
                 result = func(value)
                 return result
             except (ValueError, TypeError):
                 return default
-        return conv_no_error
+        return wrapper
     return decorator
 ```
+
+`functools.wraps(wrapped)` is a decorator that helps keep the information of the original function.
 
 To use a decorator, decorate a function during its definition by
 
