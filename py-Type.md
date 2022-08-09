@@ -1,4 +1,4 @@
-# Python Basic Data Types
+# Python Data Types
 
 
 ###### _Table of Contents_
