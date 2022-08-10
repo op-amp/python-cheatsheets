@@ -106,16 +106,16 @@ soup = bs4.BeautifulSoup(document, 'html.parser')
 | Purpose | Syntax |
 |---------|--------|
 | Type selector      | `tag`
-| Class selector     | `.class`
-| ID selector        | `#id`
-| Attribute selector | `[attr]` `[attr=value]`
-| Grouping selectors | `,`
-| Descendant combinator | ` `
-| Child combinator      | ` > `
-| General sibling combinator  | ` ~ `
-| Adjacent sibling combinator | ` + `
-| Pseudo classes  | `:`
-| Pseudo elements | `::`
+| Class selector     | `'.' + class`
+| ID selector        | `'#' + id`
+| Attribute selector | `f'[{attr}]'` `f'[{attr}={value}]'`
+| Grouping selectors | `','`
+| Descendant combinator | `' '`
+| Child combinator      | `' > '`
+| General sibling combinator  | `' ~ '`
+| Adjacent sibling combinator | `' + '`
+| Pseudo classes  | `':'`
+| Pseudo elements | `'::'`
 
 ### Tag Features
 
