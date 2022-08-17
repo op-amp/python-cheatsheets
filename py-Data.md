@@ -123,7 +123,7 @@ del List[1:3]
 ``` python
 List.reverse()
 List.sort()
-sorted(List, key = str.lower, reverse = True)
+List = sorted(List, key = str.lower, reverse = True)
 ```
 
 1. `list.reverse()` reverses the order of the elements.
