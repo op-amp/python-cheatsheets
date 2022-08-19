@@ -294,15 +294,15 @@ To use a module:
 
 1. Import the module through `import module`.
 
-	1. The module namespace must then be stated in a function call, likely `module.function()`.
+	1. The module namespace must then be stated in a invocation, likely `module.function()`.
 	2. Optional `as` following an imported module bounds the module a new name.
 	3. Multiple modules can be imported together with their names separated by `,`.
 
-2. Import specific functions from the module through `from module import function`.
+2. Import specific variables, functions or classes from the module through `from module import identifier`.
 
-	1. The function can then be called with no namespace.
-	2. Optional `as` following an imported function bounds the function a new name.
-	3. Multiple functions can be imported together with their names separated by `,`, and `*` represents all functions.
+	1. The identifier can then be called without namespace.
+	2. Optional `as` following an imported identifier bounds the identifier a new name.
+	3. Multiple identifiers can be imported together with their names separated by `,`, and `*` represents everything.
 
 
 ## Logging
