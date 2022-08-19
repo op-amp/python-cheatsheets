@@ -26,6 +26,7 @@
 	1. Boolean Values
 	2. Comparison Operators
 	3. Boolean Operators
+	4. Operator Precedence
 - [None Type](#none-type)
 - [Union Type](#union-type)
 
@@ -291,7 +292,7 @@ From high to low:
 
 1. Arithmetic operators;
 2. Comparison operators;
-3. Identity operators or membership operator;
+3. Identity or membership operators;
 4. Unary logical operator;
 5. Binary logical operators (`and` higher than `or`).
 
