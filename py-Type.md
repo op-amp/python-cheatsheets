@@ -74,6 +74,8 @@ Factors: TypeAlias = list[int]
 | `//`      | Floor Division 	|
 | `%`       | Modulo 			|
 
+The precedence of the arithmetic operators is coherent with that in math.
+
 ### Functions
 
 1. `pow(x, y)` returns `x` to the power `y`.
@@ -262,7 +264,7 @@ The expressions placed directly inside the braces will be evaluated and interpol
 
 Boolean data type has only two values: `True` and `False`.
 
-### Comparison Operators
+### Relational Operators
 
 | Operators | Descriptions |
 |-----------|--------------|
@@ -274,17 +276,24 @@ Boolean data type has only two values: `True` and `False`.
 | `>=`      | Greater than or equal to |
 | `is`      | Object identity (memory address) |
 | `is not`  | Negated object identity          |
+| `in`      | Membership         |
+| `not in`  | Negated Membership |
 
 ### Boolean Operators
 
-**Binary Operators**
-
 - `and` - Intersection. A series of values connected by `and` returns the first value evaluated `False` or the last value.
 - `or` - Union. A series of values connected by `or` returns the first value evaluated `True` or the last value.
-
-**Unary Operator**
-
 - `not` - Complement.
+
+### Operator Precedence
+
+From high to low:
+
+1. Arithmetic operators;
+2. Comparison operators;
+3. Identity operators or membership operator;
+4. Unary logical operator;
+5. Binary logical operators (`and` higher than `or`).
 
 
 ## None Type
