@@ -303,6 +303,9 @@ del Dict["David"]
 
 ```python
 Dict.update({"Frank": {"ACK": 1}, "Bob": "Three-Way"})
+
+# merge
+Dict |= {"Frank": {"SYN": 0, "ACK": 1}, "Gina": "Connection"}
 ```
 
 **Pretty Printing**
@@ -388,6 +391,8 @@ Set.discard(5)
 
 ```python
 Set.update({6, 7})
+
+# union
 Set |= {8, 9}
 ```
 
