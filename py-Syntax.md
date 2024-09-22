@@ -76,6 +76,8 @@ To avoid this behavior, use `copy.copy()` in the `copy` module to make a duplica
 
 An object with with a reference count of 0 will get cleaned up by the Python garbage collector.
 
+Use **`del` statements** to manually delete objects (recursively).
+
 
 ## Comments
 
